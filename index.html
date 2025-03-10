@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CREA INNOVACIONES</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader">  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Favicons -->
+  <link href="assets/img/creaicon.ico" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <script>
+
+window.addEventListener('scroll', function() {
+    const aboutSection = document.getElementById('about');
+    const sectionPosition = aboutSection.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.7; // Ajusta el punto de activación
+
+    if (sectionPosition < screenPosition) {
+        aboutSection.classList.add('active');
+    }
+
+    const serviceItems = document.querySelectorAll('.service-item');
+    serviceItems.forEach(item => {
+        const itemPosition = item.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        const delay = item.getAttribute('data-aos-delay') / 1900; // Obtener el delay del atributo data-aos-delay
+
+        if (itemPosition < screenPosition) {
+            setTimeout(() => { // Usar setTimeout para aplicar el delay
+                item.classList.add('active');
+            }, delay * 1000); // Convertir segundos a milisegundos
+        }
+    });
+});
+window.addEventListener('scroll', function() {
+    const title = document.querySelector('#services .container.section-title');
+    const titlePosition = title.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3;
+
+    if (titlePosition < screenPosition) {
+        title.classList.add('active');
+    }
+});
+  </script>
+    <style>
+.about img {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+.about img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+}
+
+
+    </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logohorizontal.png" alt="">      
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Inicio</a></li><!-- HOME -->
+          <li><a href="#about">Sobre Nosotros</a></li><!-- ABOUT -->
+          <li><a href="#services">Servicios</a></li><!-- SERVICES -->
+          <li><a href="#portfolio">Portafolio</a></li><!-- PORTAFOLIO -->
+          <li><a href="#pricing">Contáctanos</a></li><!-- CONTACTANOS -->
+         <!--  <li><a href="blog.html">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul> 
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="cta-btn" href="#about">Get Started</a>-->
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container d-flex flex-column align-items-center text-center">
+        <div class="hero-container">
+          <div class="wow fadeIn">
+               <div class="hero-logo">
+          <img class="" src="assets/img/logo.png"  heigth="40%" alt="Crea Innovaciones">
+        </div>
+              <h1>Bienvenidos</h1>
+              <h2>Creamos <span class="rotating">Inspiradores Diseños</span></h2>
+          </div>
+        </div>
+
+      </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Sobre Nosotros</h2>
+      </div><!-- End Section Title -->
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+           <ul>
+            <li><i class="bi bi-check2-circle"></i> <span>Misión</span></li>
+            <p>Ofrecer productos de alta calidad que mejoren la vida de nuestros clientes, aportando al mismo tiempo un impacto positivo en la comunidad y el medio ambiente.</p>
+
+            <li><i class="bi bi-check2-circle"></i> <span>Visión</span></li>
+            <p>Ser líder mundial en soluciones sostenibles que transformen la manera en que las personas y empresas interactúan con su entorno, promoviendo un futuro mejor y saludable para todos.</p>
+
+            <li><i class="bi bi-check2-circle"></i> <span>Compromisos</span></li>
+            <ul class="commitments">
+              <li><i class="bi bi-dot"></i> Desarrollamos soluciones basadas en la experiencia del usuario.</li>
+              <li><i class="bi bi-dot"></i> Nuestro equipo no es el mismo sin todos sus miembros.</li>
+              <li><i class="bi bi-dot"></i> Nos esmeramos en ser congruentes con lo que decimos y hacemos.</li>
+              <li><i class="bi bi-dot"></i> Cumplimos con nuestros compromisos y hacemos frente a todos los hechos.</li>
+            </ul>
+          </ul>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-img">
+              <img src="assets/img/blog/Imagen6.jpg" class="img-fluid" alt="Imagen sobre nosotros">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    </section><!-- /About Section -->
+    <!-- /Seccion para Banner -
+    <section id="statss">
+
+      <img src="assets/img/banner1.png" alt="" data-aos="fade-in">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+        <-- <div class="subheading">
+          <h3>What we have achieved so far</h3>
+          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+        </div> --
+        <div class="row gy-4">
+
+          <-- <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Clients</p>
+            </div>
+          </div><-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div>!-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+          </div><-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Workers</p>
+            </div>
+          </div><-- End Stats Item --
+
+        </div>
+
+      </div>
+
+    </section><-- /Stats Section -->
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Servicios</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative ">
+              <div class="icon">
+                <i class="bi bi-bar-chart-steps"></i>
+              </div>
+                <h3>Trabajos en Vinil</h3>
+              <p>Ofrecemos Vinil, vinil biselado, que crea un efecto de tallado en vidrios, ideal para diseños decorativos. Además, fabricamos suajes de precisión para cortar materiales como cartón, papel, PVC, piel, telas, fieltros y más. Nuestros suajes son utilizados principalmente en la industria de las artes gráficas, asegurando cortes exactos y de alta calidad. .</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-tv"></i>
+              </div>
+                <h3>Ventas de Pantallas LED</h3>
+              <p>Las pantallas LED son una excelente opción para diversas aplicaciones, como publicidad, señalización, entretenimiento y más. Estas pantallas ofrecen una alta calidad de imagen con colores brillantes y nítidos, incluso en entornos de alta luminosidad.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-tv-fill"></i>
+              </div>
+                <h3>Renta de Pantallas LED</h3>
+              <p>Versatilidad de productos, interior o exterior, como: pantallas o vallas móviles, mupis, etc.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-cast"></i>
+              </div>
+              <h3>Instalación de Pantallas LED</h3>
+              <p>Contamos con equipo y experiencia para satisfacer sus necesidades no importa el lugar de la república o requerimentos para su pantalla.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+                <h3>Ventas de Espacio Publicitario</h3>
+              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-receipt"></i>
+              </div>
+                <h3>Anuncios Luminosos y Letras en 3D</h3>
+              <p>Nuestro principal objetivo es brindarte el mejor servicio de fabricación y venta de anuncios luminosos. Se realizan diseños de acuerdo a lo que el cliente requiera y la idea que tenga.Así como la venta de Letras en 3D</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section dark-background">
+    <img src="assets/img/banner0.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="text-image-container">
+                <h2>COMING SOON</h2>
+                <p>Torre Latinoamericana</p>
+            </div>
+        </div>
+    </div>
+</section><!-- /Call To Action Section -->
+
+    <!-- Features Section -->
+    <!-- <section id="features" class="features section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="features-image col-lg-6 order-lg-2" data-aos="fade-up" data-aos-delay="100"><img src="assets/img/features-bg.jpg" alt=""></div>
+
+          <div class="col-lg-6 order-lg-1">
+
+            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-archive flex-shrink-0"></i>
+              <div>
+                <h4>Est labore ad</h4>
+                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+              </div>
+            </div><-- End Features Item--
+
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-basket flex-shrink-0"></i>
+              <div>
+                <h4>Harum esse qui</h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+              </div>
+            </div>-- End Features Item--
+
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-broadcast flex-shrink-0"></i>
+              <div>
+                <h4>Aut occaecati</h4>
+                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+              </div>
+            </div><-- End Features Item--
+
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
+              <i class="bi bi-camera-reels flex-shrink-0"></i>
+              <div>
+                <h4>Beatae veritatis</h4>
+                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+              </div>
+            </div><-- End Features Item-
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><-- /Features Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+       <div class="container section-title" data-aos="fade-up">
+        <h2>Portafolio</h2>
+      </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-0 clients-wrap">
+          <div class="col-xl-4 col-md-4 client-logo">
+            <img src="assets/img/accenture.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+          <div class="col-xl-4 col-md-4 client-logo">
+            <img src="assets/img/bmw.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+          <div class="col-xl-4 col-md-4 client-logo">
+            <img src="assets/img/torrelatino.png" class="img-fluid" alt="">
+          </div><!-- End Client Item -->
+        </div>
+      </div>
+    </section><!-- /Clients Section -->
+
+    <!-- Stats Section 
+    <section id="stats" class="stats section dark-background">
+
+      <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="subheading">
+          <h3>What we have achieved so far</h3>
+          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Clients</p>
+            </div>
+          </div><-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div><-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Hours Of Support</p>
+            </div>
+          </div><-- End Stats Item --
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Workers</p>
+            </div>
+          </div><-- End Stats Item --
+
+        </div>
+
+      </div>-
+
+    </section><-- /Stats Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contáctanos</h2>
+        <p>No dudes en comunicarte con nosotros. Estamos seguros que podemos hacer algo por tí.</p>
+      </div><!-- End Section Title -->
+      <br/>
+      <div class="container" data-aos="fade" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Direccíon</h3>
+                <p>Aida No.65 Col. San Angel Inn, Álvaro Obregón, CDMX</p>
+              </div>
+            </div><!-- End Info Item -->
+
+<!--             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>!-- End Info Item --> 
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Correo Electrónico</h3>
+                <p>info@creainnovaciones.com.mx</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Ingresa tu nombre" required="">
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Ingresa tu correo" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Asunto" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Mensaje" required=""></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="loading">Cargando...</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Tu mensaje ha sido enviado exitosamente!</div>
+                  <button type="submit">Enviar Mensaje</button>
+                </div>
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h2 class="sitename">Nuestras Redes Sociales</h2>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/525518602163?text=Hola,Me interesa sus productos" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">2025 Crea Innovaciones</strong> <span>Todos los Derechos Reservados</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
