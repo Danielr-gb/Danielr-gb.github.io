@@ -25,10 +25,10 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Favicons -->
   <link href="assets/img/creaicon.ico" rel="icon">
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -45,102 +45,161 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <script>
-
-window.addEventListener('scroll', function() {
-    const aboutSection = document.getElementById('about');
-    const sectionPosition = aboutSection.getBoundingClientRect().top;
+    window.addEventListener('scroll', function() {
+      const aboutSection = document.getElementById('about');
+      const sectionPosition = aboutSection.getBoundingClientRect().top;
     const screenPosition = window.innerHeight / 1.7; // Ajusta el punto de activación
 
     if (sectionPosition < screenPosition) {
-        aboutSection.classList.add('active');
+      aboutSection.classList.add('active');
     }
 
     const serviceItems = document.querySelectorAll('.service-item');
     serviceItems.forEach(item => {
-        const itemPosition = item.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
+      const itemPosition = item.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
         const delay = item.getAttribute('data-aos-delay') / 1900; // Obtener el delay del atributo data-aos-delay
 
         if (itemPosition < screenPosition) {
             setTimeout(() => { // Usar setTimeout para aplicar el delay
-                item.classList.add('active');
+              item.classList.add('active');
             }, delay * 1000); // Convertir segundos a milisegundos
-        }
+          }
+        });
+  });
+    window.addEventListener('scroll', function() {
+      const title = document.querySelector('#services .container.section-title');
+      const titlePosition = title.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+
+      if (titlePosition < screenPosition) {
+        title.classList.add('active');
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.querySelector('.mobile-nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.mobile-nav-overlay');
+    const closeButton = document.querySelector('.mobile-nav-close');
+
+    // Mostrar menú
+    toggleButton.addEventListener('click', function () {
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.classList.toggle('mobile-nav-active');
+    });
+
+    // Cerrar menú (botón 'X')
+    closeButton.addEventListener('click', function () {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('mobile-nav-active');
+    });
+
+    // Cerrar menú si se hace clic en el overlay
+    overlay.addEventListener('click', function () {
+        mobileNav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('mobile-nav-active');
     });
 });
-window.addEventListener('scroll', function() {
-    const title = document.querySelector('#services .container.section-title');
-    const titlePosition = title.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.3;
+     const carousels = {
+        1: [
+            { src: "assets/img/clients/accenture1.jpg", desc: "Proyecto Accenture 1" },
+            { src: "assets/img/clients/accenture2.jpg", desc: "Proyecto Accenture 2" },
+            { src: "assets/img/clients/accenture3.jpg", desc: "Proyecto Accenture 3" }
+        ],
+        2: [
+            { src: "assets/img/clients/bmw1.jpg", desc: "Innovación en BMW" },
+            { src: "assets/img/clients/bmw2.jpg", desc: "BMW Electric Cars" },
+            { src: "assets/img/clients/bmw3.jpg", desc: "Conectividad en BMW" }
+        ],
+        3: [
+            { src: "assets/img/clients/torre1.jpg", desc: "Vista de Torre Latino" },
+            { src: "assets/img/clients/torre1.jpg", desc: "Arquitectura Torre Latino" },
+            { src: "assets/img/clients/torre1.jpg", desc: "Historia de Torre Latino" }
+        ]
+    };
 
-    if (titlePosition < screenPosition) {
-        title.classList.add('active');
+    function showCarousel(id) {
+        const carouselContent = document.getElementById('carouselContent');
+        carouselContent.innerHTML = ''; // Limpiar contenido anterior
+
+        // Agregar imágenes dinámicamente con descripción
+        carousels[id].forEach((item, index) => {
+            let activeClass = index === 0 ? 'active' : '';
+            carouselContent.innerHTML += `
+                <div class="carousel-item ${activeClass}">
+                    <img src="${item.src}" class="img-fluid" alt="Imagen ${index + 1}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${item.desc}</h5>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Mostrar el modal
+        let modal = new bootstrap.Modal(document.getElementById('carouselModal'), { keyboard: false });
+        modal.show();
     }
-});
+
+    function hideCarousel() {
+        let modalElement = document.getElementById('carouselModal');
+        let modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+    }
+
   </script>
-    <style>
-.about img {
-    position: relative;
-    display: table;
-    width: 100%;
-    height: 40vh;
-    background-size: cover;
-    transition: transform 0.3s ease-in-out; /* Transición suave */
-}
+  <style>
+    .about img {
+      position: relative;
+      display: table;
+      width: 100%;
+      height: 40vh;
+      background-size: cover;
+      transition: transform 0.3s ease-in-out; /* Transición suave */
+    }
 
-.about img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño en un 10% */
-}
+    .about img:hover {
+      transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+    }
 
-
-    </style>
+  </style>
 
 </head>
 
 <body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
+    <a href="https://wa.me/525518602163?text=Me interesa una cotizacion" class="floating-button" target="_blank" >
+        <i class="fab fa-whatsapp"></i> <!-- Ícono de WhatsApp -->
+        ¿Requieres una cotización?
+    </a>
+ <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logohorizontal.png" alt="">      
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Inicio</a></li><!-- HOME -->
-          <li><a href="#about">Sobre Nosotros</a></li><!-- ABOUT -->
-          <li><a href="#services">Servicios</a></li><!-- SERVICES -->
-          <li><a href="#portfolio">Portafolio</a></li><!-- PORTAFOLIO -->
-          <li><a href="#pricing">Contáctanos</a></li><!-- CONTACTANOS -->
-         <!--  <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <img src="assets/img/logohorizontal.png"  width=150px alt="">
+        <nav id="navmenu" class="navmenu">
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+                <li><a href="#hero" class="active">Inicio</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#clients">Portafolio</a></li>
+                <li><a href="#contact">Contáctanos</a></li>
             </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul> 
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="cta-btn" href="#about">Get Started</a>-->
-
+        </nav>
+        <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+        <div class="mobile-nav-overlay d-xl-none"></div> <nav id="mobile-nav" class="mobile-nav d-xl-none">
+            <div class="mobile-nav-header">
+                <i class="bi bi-x mobile-nav-close"></i>
+            </div>
+            <ul>
+                <li><a href="#hero" class="active">Inicio</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#clients">Portafolio</a></li>
+                <li><a href="#contact">Contáctanos</a></li>
+            </ul>
+        </nav>
     </div>
-  </header>
+</header>
 
   <main class="main">
 
@@ -153,7 +212,7 @@ window.addEventListener('scroll', function() {
           <img class="" src="assets/img/logo.png"  heigth="40%" alt="Crea Innovaciones">
         </div>
               <h1>Bienvenidos</h1>
-              <h2>Creamos <span class="rotating">Inspiradores Diseños</span></h2>
+              <h3>Creamos Diseños Inspiradores</h3>
           </div>
         </div>
 
@@ -200,6 +259,7 @@ window.addEventListener('scroll', function() {
     </div>
 
     </section><!-- /About Section -->
+
     <!-- /Seccion para Banner -
     <section id="statss">
 
@@ -247,6 +307,18 @@ window.addEventListener('scroll', function() {
 
     </section><-- /Stats Section -->
     <!-- Services Section -->
+        <!-- Call To Action Section -
+<section id="call-to-action" class="call-to-action section dark-background">
+    <img src="assets/img/banner0.jpg" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="text-image-container">
+                <h2>COMING SOON</h2>
+                <p>Torre Latinoamericana</p>
+            </div>
+        </div>
+    </div>
+</section><-- /Call To Action Section -->
     <section id="services" class="services section">
 
       <!-- Section Title -->
@@ -259,16 +331,6 @@ window.addEventListener('scroll', function() {
         <div class="row gy-4">
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative ">
-              <div class="icon">
-                <i class="bi bi-bar-chart-steps"></i>
-              </div>
-                <h3>Trabajos en Vinil</h3>
-              <p>Ofrecemos Vinil, vinil biselado, que crea un efecto de tallado en vidrios, ideal para diseños decorativos. Además, fabricamos suajes de precisión para cortar materiales como cartón, papel, PVC, piel, telas, fieltros y más. Nuestros suajes son utilizados principalmente en la industria de las artes gráficas, asegurando cortes exactos y de alta calidad. .</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-tv"></i>
@@ -278,7 +340,7 @@ window.addEventListener('scroll', function() {
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-tv-fill"></i>
@@ -286,6 +348,16 @@ window.addEventListener('scroll', function() {
                 <h3>Renta de Pantallas LED</h3>
               <p>Versatilidad de productos, interior o exterior, como: pantallas o vallas móviles, mupis, etc.</p>
             </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+                <h3>Venta de Espacio Publicitario</h3>
+              <p>Tenemos los mejores espacios para tu publicidad. Posicionamos tu negocio en los puntos más estratégicos para incrementar tu visibilidad de marca.</p>
+            </div>           
           </div><!-- End Service Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
@@ -301,21 +373,21 @@ window.addEventListener('scroll', function() {
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-item position-relative">
               <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-                <h3>Ventas de Espacio Publicitario</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <div class="icon">
                 <i class="bi bi-receipt"></i>
               </div>
                 <h3>Anuncios Luminosos y Letras en 3D</h3>
               <p>Nuestro principal objetivo es brindarte el mejor servicio de fabricación y venta de anuncios luminosos. Se realizan diseños de acuerdo a lo que el cliente requiera y la idea que tenga.Así como la venta de Letras en 3D</p>
-            </div>
+            </div>           
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item  position-relative ">
+              <div class="icon">
+                <i class="bi bi-bar-chart-steps"></i>
+              </div>
+                <h3>Trabajos en Vinil</h3>
+              <p>Ofrecemos Vinil, vinil biselado, que crea un efecto de tallado en vidrios, ideal para diseños decorativos. Además, fabricamos suajes de precisión para cortar materiales como cartón, papel, PVC, piel, telas, fieltros y más. Nuestros suajes son utilizados principalmente en la industria de las artes gráficas, asegurando cortes exactos y de alta calidad. .</p>
+            </div>            
           </div><!-- End Service Item -->
 
         </div>
@@ -323,20 +395,6 @@ window.addEventListener('scroll', function() {
       </div>
 
     </section><!-- /Services Section -->
-
-    <!-- Call To Action Section -->
-<section id="call-to-action" class="call-to-action section dark-background">
-    <img src="assets/img/banner0.jpg" alt="">
-    <div class="container">
-        <div class="row">
-            <div class="text-image-container">
-                <h2>COMING SOON</h2>
-                <p>Torre Latinoamericana</p>
-            </div>
-        </div>
-    </div>
-</section><!-- /Call To Action Section -->
-
     <!-- Features Section -->
     <!-- <section id="features" class="features section">
 
@@ -389,24 +447,55 @@ window.addEventListener('scroll', function() {
     </section><-- /Features Section -->
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section">
-       <div class="container section-title" data-aos="fade-up">
+<section id="clients" class="clients section">
+    <div class="container section-title" data-aos="fade-up">
         <h2>Portafolio</h2>
-      </div><!-- End Section Title -->
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row g-0 clients-wrap">
-          <div class="col-xl-4 col-md-4 client-logo">
-            <img src="assets/img/accenture.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-          <div class="col-xl-4 col-md-4 client-logo">
-            <img src="assets/img/bmw.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-          <div class="col-xl-4 col-md-4 client-logo">
-            <img src="assets/img/torrelatino.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+    </div>
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="client-logo" onmouseenter="showCarousel(1)">
+                    <img src="assets/img/accenture.png" class="img-fluid" alt="Accenture">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="client-logo" onmouseenter="showCarousel(2)">
+                    <img src="assets/img/bmw.png" class="img-fluid" alt="BMW">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="client-logo" onmouseenter="showCarousel(3)">
+                    <img src="assets/img/torrelatino.png" class="img-fluid" alt="Torre Latino">
+                </div>
+            </div>
         </div>
-      </div>
-    </section><!-- /Clients Section -->
+    </div>
+</section>
+
+<!-- Modal con el carrusel -->
+<div class="modal fade" id="carouselModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" onclick="hideCarousel()" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselClients" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="carouselContent">
+                        <!-- Imágenes dinámicas aquí -->
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselClients" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselClients" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- /Clients Section -->
 
     <!-- Stats Section 
     <section id="stats" class="stats section dark-background">
@@ -478,13 +567,13 @@ window.addEventListener('scroll', function() {
               </div>
             </div><!-- End Info Item -->
 
-<!--             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <h3>Teléfono</h3>
+                <p>55 6189 7427</p>
               </div>
-            </div>!-- End Info Item --> 
+            </div>
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope flex-shrink-0"></i>
