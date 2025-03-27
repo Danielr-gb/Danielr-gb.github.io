@@ -67,6 +67,7 @@
           }
         });
   });
+
     window.addEventListener('scroll', function() {
       const title = document.querySelector('#services .container.section-title');
       const titlePosition = title.getBoundingClientRect().top;
@@ -76,6 +77,54 @@
         title.classList.add('active');
       }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+          const images = document.querySelectorAll(".fade-in");
+
+          function showImages() {
+              images.forEach((img) => {
+                  const rect = img.getBoundingClientRect();
+                  if (rect.top < window.innerHeight * 0.9) {
+                      img.classList.add("show");
+                  }
+              });
+          }
+
+          window.addEventListener("scroll", showImages);
+          showImages(); // Para activar imágenes visibles al cargar la página
+      });
+document.addEventListener("DOMContentLoaded", function () {
+      const h2 = document.querySelector(".slide-in");
+
+      function showTitle() {
+          const rect = h2.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.9) {
+              h2.classList.add("show");
+          }
+      }
+
+      window.addEventListener("scroll", showTitle);
+      showTitle(); // Para activar si ya está en pantalla al cargar
+  });
+    document.addEventListener("DOMContentLoaded", function () {
+    const sections = [
+        document.querySelector("#contact .container.section-title"),
+        document.querySelector(".container")
+    ];
+    function showSections() {
+        sections.forEach(section => {
+            if (section) { // Verifica que el elemento existe
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    section.classList.add("show");
+                }
+            }
+        });
+    }
+
+    window.addEventListener("scroll", showSections);
+    showSections(); // Para activarlo si ya está en pantalla al cargar
+});
+
     document.addEventListener('DOMContentLoaded', function () {
     const toggleButton = document.querySelector('.mobile-nav-toggle');
     const mobileNav = document.querySelector('.mobile-nav');
@@ -105,19 +154,19 @@
 });
      const carousels = {
         1: [
-            { src: "assets/img/clients/accenture1.jpg", desc: "Proyecto Accenture 1" },
-            { src: "assets/img/clients/accenture2.jpg", desc: "Proyecto Accenture 2" },
-            { src: "assets/img/clients/accenture3.jpg", desc: "Proyecto Accenture 3" }
+            { src: "assets/img/clients/accenture1.jpg"},
+            { src: "assets/img/clients/accenture2.jpg"},
+            { src: "assets/img/clients/accenture3.jpg"}
         ],
         2: [
-            { src: "assets/img/clients/bmw1.jpg", desc: "Innovación en BMW" },
-            { src: "assets/img/clients/bmw2.jpg", desc: "BMW Electric Cars" },
-            { src: "assets/img/clients/bmw3.jpg", desc: "Conectividad en BMW" }
+            { src: "assets/img/clients/bmw1.jpg" },
+            { src: "assets/img/clients/bmw2.jpg" },
+            { src: "assets/img/clients/bmw3.jpg" }
         ],
         3: [
-            { src: "assets/img/clients/torre1.jpg", desc: "Vista de Torre Latino" },
-            { src: "assets/img/clients/torre1.jpg", desc: "Arquitectura Torre Latino" },
-            { src: "assets/img/clients/torre1.jpg", desc: "Historia de Torre Latino" }
+            { src: "assets/img/clients/torre1.jpg" },
+            { src: "assets/img/clients/torre2.jpg" },
+            { src: "assets/img/clients/torre3.jpg" }
         ]
     };
 
@@ -131,13 +180,10 @@
             carouselContent.innerHTML += `
                 <div class="carousel-item ${activeClass}">
                     <img src="${item.src}" class="img-fluid" alt="Imagen ${index + 1}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>${item.desc}</h5>
-                    </div>
                 </div>
             `;
         });
-
+        //<div class="carousel-caption d-none d-md-block"> <h5>${item.desc}</h5> </div>
         // Mostrar el modal
         let modal = new bootstrap.Modal(document.getElementById('carouselModal'), { keyboard: false });
         modal.show();
@@ -169,9 +215,9 @@
 </head>
 
 <body class="index-page">
-    <a href="https://wa.me/525518602163?text=Me interesa una cotizacion" class="floating-button" target="_blank" >
+    <a href="https://wa.me/525561897427?text=Me interesa una cotizacion" class="floating-button" target="_blank" >
         <i class="fab fa-whatsapp"></i> <!-- Ícono de WhatsApp -->
-        ¿Requieres una cotización?
+        
     </a>
  <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -186,7 +232,8 @@
             </ul>
         </nav>
         <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-        <div class="mobile-nav-overlay d-xl-none"></div> <nav id="mobile-nav" class="mobile-nav d-xl-none">
+        <div class="mobile-nav-overlay d-xl-none"></div> 
+          <nav id="mobile-nav" class="mobile-nav d-xl-none">
             <div class="mobile-nav-header">
                 <i class="bi bi-x mobile-nav-close"></i>
             </div>
@@ -253,74 +300,69 @@
           </div>
 
         </div>
-
       </div>
-
     </div>
-
     </section><!-- /About Section -->
 
-    <!-- /Seccion para Banner -
+    <!-- Seccion para Banner 
     <section id="statss">
 
       <img src="assets/img/banner1.png" alt="" data-aos="fade-in">
 
-      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <--<div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
 
-        <-- <div class="subheading">
+        <div class="subheading">
           <h3>What we have achieved so far</h3>
           <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
-        </div> --
-        <div class="row gy-4">
+        </div> 
+         <div class="row gy-4">
 
-          <-- <div class="col-lg-3 col-md-6">
+           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
               <p>Clients</p>
             </div>
-          </div><-- End Stats Item --
+          </div>-- End Stats Item --
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
               <p>Projects</p>
             </div>
-          </div>!-- End Stats Item --
+          </div>-- End Stats Item --
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
               <p>Hours Of Support</p>
             </div>
-          </div><-- End Stats Item --
+          </div>-- End Stats Item --
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
               <p>Workers</p>
             </div>
-          </div><-- End Stats Item --
+          </div>-- End Stats Item --
 
         </div>
 
-      </div>
+      </div>-->
 
-    </section><-- /Stats Section -->
-    <!-- Services Section -->
-        <!-- Call To Action Section -
-<section id="call-to-action" class="call-to-action section dark-background">
-    <img src="assets/img/banner0.jpg" alt="">
-    <div class="container">
-        <div class="row">
-            <div class="text-image-container">
-                <h2>COMING SOON</h2>
-                <p>Torre Latinoamericana</p>
+    </section><!-- /Stats Section -->
+        <!-- Services Section -->
+            <!-- Call To Action Section -->
+    <!-- <section id="call-to-action" class="call-to-action section dark-background">
+        <img src="assets/img/banner0.jpg" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="text-image-container">
+                    <img src="assets/img/logoc.png">
+                </div>
             </div>
         </div>
-    </div>
-</section><-- /Call To Action Section -->
+    </section> -->
     <section id="services" class="services section">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Servicios</h2>
@@ -394,7 +436,19 @@
 
       </div>
 
-    </section><!-- /Services Section -->
+    </section>
+    <section id="call-to-action" class="call-to-action section dark-background">
+        <div class="background-image"></div>
+        <div class="container">
+            <div class="row">
+                <div class="text-image-container">
+                    <img src="assets/img/logobn.png" alt="Logo estático">
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- /Call To Action Section -->    
+    <!-- /Services Section -->
     <!-- Features Section -->
     <!-- <section id="features" class="features section">
 
@@ -449,23 +503,23 @@
     <!-- Clients Section -->
 <section id="clients" class="clients section">
     <div class="container section-title" data-aos="fade-up">
-        <h2>Portafolio</h2>
+        <h2 class="slide-in">Portafolio</h2>
     </div>
     <div class="container">
         <div class="row g-3">
             <div class="col-md-4">
                 <div class="client-logo" onmouseenter="showCarousel(1)">
-                    <img src="assets/img/accenture.png" class="img-fluid" alt="Accenture">
+                    <img src="assets/img/accenture.png" class="img-fluid fade-in" alt="Accenture">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="client-logo" onmouseenter="showCarousel(2)">
-                    <img src="assets/img/bmw.png" class="img-fluid" alt="BMW">
+                    <img src="assets/img/bmw.png" class="img-fluid fade-in" alt="BMW">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="client-logo" onmouseenter="showCarousel(3)">
-                    <img src="assets/img/torrelatino.png" class="img-fluid" alt="Torre Latino">
+                    <img src="assets/img/torrelatino.png" class="img-fluid fade-in" alt="Torre Latino">
                 </div>
             </div>
         </div>
@@ -546,16 +600,14 @@
     </section><-- /Stats Section -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
-
+    <section id="contact" class="contact section dark-background">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title slide-in">
         <h2>Contáctanos</h2>
         <p>No dudes en comunicarte con nosotros. Estamos seguros que podemos hacer algo por tí.</p>
       </div><!-- End Section Title -->
       <br/>
-      <div class="container" data-aos="fade" data-aos-delay="100">
-
+      <div class="container">
         <div class="row gy-4">
 
           <div class="col-lg-4">
@@ -618,14 +670,14 @@
     </section><!-- /Contact Section -->
   </main>
 
-  <footer id="footer" class="footer dark-background">
+  <footer id="footer" class="footer">
     <div class="container">
       <h2 class="sitename">Nuestras Redes Sociales</h2>
         <div class="social-icons">
-            <a href="https://facebook.com" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            <a href="https://wa.me/525518602163?text=Hola,Me interesa sus productos" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61569677837737" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+            <!-- <a href="https://instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a> -->
+            <a href="https://www.linkedin.com/company/crea-innovaciones/link" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/525561897427?text=Hola,Me interesan sus productos" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
         </div>
       <div class="container">
         <div class="copyright">

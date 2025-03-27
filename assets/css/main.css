@@ -312,6 +312,7 @@ h6 {
 /* Ocultar el menú lateral en pantallas grandes */
 .mobile-nav {
     display: none;
+
 }
 
 /* Mostrar el menú lateral en pantallas pequeñas */
@@ -320,7 +321,7 @@ h6 {
     position: fixed;
     top: 0;
     right: 0;
-    width: 300px; /* Ajusta el ancho según tus preferencias */
+    width: 200px; /* Ajusta el ancho según tus preferencias */
     height: 100vh;
     background-color: #333; /* Ajusta el color de fondo */
     z-index: 1000;
@@ -357,6 +358,7 @@ h6 {
 
 .mobile-nav-overlay.active {
     display: block;
+     left: 0;
 }
 
 /* Estilos del boton X */
@@ -511,11 +513,14 @@ h6 {
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    position: fixed; /* Mantiene el botón fijo en la pantalla */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    right: 20px; /* Lo pega al lado derecho */
   }
 
   .navmenu {
     padding: 0;
-    z-index: 9997;
+    
   }
 
   .navmenu ul {
@@ -605,6 +610,7 @@ h6 {
     display: none; /* Oculto por defecto */
     background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro transparente */
     backdrop-filter: blur(8px); /* Efecto de desenfoque */
+         margin-left: -20px;
 }
 
 .mobile-nav.active {
@@ -1161,7 +1167,7 @@ section,
 
 .services .service-item .icon {
   color: var(--contrast-color);
-  background: #79d1d9;
+  background: #257595;
   margin: 0;
   width: 64px;
   height: 64px;
@@ -1206,11 +1212,11 @@ section,
 @media (min-width: 1365px) {
   .services .service-item:hover {
     transform: translateY(-10px);
-    border-color: #79d1d9;
+    border-color: #257595;
   }
 
   .services .service-item:hover h3 {
-    color: #79d1d9;
+    color: #257595;
   }
 }
 
@@ -1218,58 +1224,55 @@ section,
 /*--------------------------------------------------------------
 # Call To Action Section
 --------------------------------------------------------------*/
-.call-to-action .text-image-container img {
-    width: 200px;
-    height: auto;
-    margin-top: 20px; /* Espacio entre el texto y la imagen */
-}
-
-.call-to-action .text-image-container {
-    display: flex;
-    flex-direction: column; /* Apilar verticalmente */
-    align-items: center;
-    justify-content: center;
-}
-
+/* Contenedor general */
 .call-to-action {
-    padding: 120px 0;
+    padding: 50px 0;
     position: relative;
     clip-path: inset(0);
 }
 
+/* Fondo Parallax */
+.call-to-action .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('../img/banner2.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect */
+    z-index: 1;
+}
+.call-to-action .background-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8); /* Negro semi-transparente */
+}
+
+/* Contenido centrado sobre el fondo */
 .call-to-action .container {
     position: relative;
     z-index: 3;
     text-align: center;
 }
 
-.call-to-action .container h2 {
-    font-size: 4em;
-    margin-bottom: 10px; /* Espacio entre h2 y p */
+/* Imagen estática (logoc.png) */
+.call-to-action .text-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 4; /* Asegura que esté sobre el fondo */
 }
 
-.call-to-action .container p {
-    font-size: 1.5em;
+.call-to-action .text-image-container img {
+    width: 150px;
+    height: auto;
+    margin-top: 20px;
 }
 
-.call-to-action img {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-.call-to-action:before {
-    content: "";
-    background: color-mix(in srgb, var(--background-color), transparent 50%);
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-}
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
@@ -1315,8 +1318,28 @@ section,
             padding: 50px 0;
             background-color: #f9f9f9;
         }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
 
-        /* Tamaño uniforme de las imágenes pequeñas */
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-100px); /* Mueve el h2 fuera de la pantalla */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .slide-in.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+                /* Tamaño uniforme de las imágenes pequeñas */
         .client-logo {
             display: flex;
             justify-content: center;
@@ -1363,25 +1386,25 @@ section,
             display: block;
         }
 
-/* Estilo para las descripciones */
-.carousel-caption {
-    background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
-    padding: 10px;
-    width: auto; /* Ancho automático para ajustarse al contenido */
-    max-width: 80%; /* Ancho máximo para no exceder el tamaño de la imagen */
-    height: auto;
-    text-align: center;
-    border-radius: 5px;
-    position: absolute; /* Posicionamiento absoluto */
-    bottom: 20px; /* Distancia desde la parte inferior */
-    left: 50%; /* Centrado horizontal */
-    transform: translateX(-50%); /* Ajuste fino para centrar */
-    z-index: 10; /* Asegura que esté por encima de la imagen */
-}
-/* Efecto de zoom en la imagen del logo 
-.clients .client-logo:hover img {
-  transform: scale(1.1);*/
-}
+        /* Estilo para las descripciones */
+        .carousel-caption {
+            background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
+            padding: 10px;
+            width: auto; /* Ancho automático para ajustarse al contenido */
+            max-width: 80%; /* Ancho máximo para no exceder el tamaño de la imagen */
+            height: auto;
+            text-align: center;
+            border-radius: 5px;
+            position: absolute; /* Posicionamiento absoluto */
+            bottom: 20px; /* Distancia desde la parte inferior */
+            left: 50%; /* Centrado horizontal */
+            transform: translateX(-50%); /* Ajuste fino para centrar */
+            z-index: 10; /* Asegura que esté por encima de la imagen */
+        }
+        /* Efecto de zoom en la imagen del logo 
+        .clients .client-logo:hover img {
+          transform: scale(1.1);*/
+        }
 
 /*--------------------------------------------------------------
 # Stats Section
@@ -1809,7 +1832,9 @@ section,
 .contact .info-item+.info-item {
   margin-top: 40px;
 }
-
+#cont {
+    background-color: #f7f4fe; /* Un color gris claro de ejemplo */
+}
 .contact .info-item i {
   color: var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), transparent 92%);
@@ -1867,7 +1892,7 @@ section,
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
 .contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
 .contact .php-email-form button[type=submit] {
