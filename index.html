@@ -170,30 +170,45 @@ document.addEventListener("DOMContentLoaded", function () {
         ]
     };
 
-    function showCarousel(id) {
-        const carouselContent = document.getElementById('carouselContent');
-        carouselContent.innerHTML = ''; // Limpiar contenido anterior
+   document.addEventListener("DOMContentLoaded", function () {
+    // Obtener todas las imágenes con clase "client-logo"
+    const images = document.querySelectorAll(".client-logo img");
 
-        // Agregar imágenes dinámicamente con descripción
-        carousels[id].forEach((item, index) => {
-            let activeClass = index === 0 ? 'active' : '';
-            carouselContent.innerHTML += `
-                <div class="carousel-item ${activeClass}">
-                    <img src="${item.src}" class="img-fluid" alt="Imagen ${index + 1}">
-                </div>
-            `;
+    // Agregar evento de clic a cada imagen
+    images.forEach((img, index) => {
+        img.addEventListener("click", function () {
+            showCarousel(index + 1); // Llama la función con el ID de la imagen
         });
-        //<div class="carousel-caption d-none d-md-block"> <h5>${item.desc}</h5> </div>
-        // Mostrar el modal
-        let modal = new bootstrap.Modal(document.getElementById('carouselModal'), { keyboard: false });
-        modal.show();
-    }
+    });
+});
 
-    function hideCarousel() {
-        let modalElement = document.getElementById('carouselModal');
-        let modalInstance = bootstrap.Modal.getInstance(modalElement);
+function showCarousel(id) {
+    const carouselContent = document.getElementById('carouselContent');
+    carouselContent.innerHTML = ''; // Limpiar contenido anterior
+
+    // Agregar imágenes dinámicamente con descripción
+    carousels[id].forEach((item, index) => {
+        let activeClass = index === 0 ? 'active' : '';
+        carouselContent.innerHTML += `
+            <div class="carousel-item ${activeClass}">
+                <img src="${item.src}" class="img-fluid" alt="Imagen ${index + 1}">
+            </div>
+        `;
+    });
+
+    // Mostrar el modal
+    let modal = new bootstrap.Modal(document.getElementById('carouselModal'), { keyboard: false });
+    modal.show();
+}
+
+function hideCarousel() {
+    let modalElement = document.getElementById('carouselModal');
+    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
         modalInstance.hide();
     }
+}
+
 
   </script>
   <style>
@@ -508,17 +523,17 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container">
         <div class="row g-3">
             <div class="col-md-4">
-                <div class="client-logo" onmouseenter="showCarousel(1)">
+                <div class="client-logo" >
                     <img src="assets/img/accenture.png" class="img-fluid fade-in" alt="Accenture">
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="client-logo" onmouseenter="showCarousel(2)">
+                <div class="client-logo">
                     <img src="assets/img/bmw.png" class="img-fluid fade-in" alt="BMW">
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="client-logo" onmouseenter="showCarousel(3)">
+                <div class="client-logo">
                     <img src="assets/img/torrelatino.png" class="img-fluid fade-in" alt="Torre Latino">
                 </div>
             </div>
