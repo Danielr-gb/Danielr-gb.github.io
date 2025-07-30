@@ -1,0 +1,120 @@
+/* Fuentes y colores */
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #fff9f5;
+}
+
+/* Portada */
+.portada {
+    background-image: url('images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.portada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.texto-portada {
+    position: relative;
+    z-index: 1;
+}
+
+.texto-portada h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.texto-portada h2 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+.texto-portada p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+/* Secciones */
+.detalles, .rsvp, .galeria {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.detalles h3, .rsvp h3, .galeria h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.info p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.mapa iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border: none;
+    margin-top: 20px;
+}
+
+/* Botón RSVP */
+.boton {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #d4a373;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.boton:hover {
+    background: #b38a5e;
+}
+
+/* Galería */
+.fotos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fotos img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .texto-portada h1 {
+        font-size: 3rem;
+    }
+    .texto-portada h2 {
+        font-size: 2rem;
+    }
+}

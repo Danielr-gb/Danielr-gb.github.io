@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda</title>
+  <!-- Fuente cursiva completa -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+        * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poiret One", sans-serif;
+      font-style: normal;
+      background-color: #fbf9f9;
+      color: #000;
+      line-height: 1.6;
+      font-size: 1.4rem;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: "Great Vibes", cursive;
+      font-style: normal;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.8rem;
+      font-style: italic;
+    }
+
+    .hero-container {
+      display: flex;
+      height: 740px;
+      overflow: hidden;
+    }
+
+    .parallax-image {
+      flex: 0.9;
+      background-image: url('images/foto1.jpg'); /* Tu ruta real */
+      background-size: 44% auto;
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-attachment: fixed;
+      background-color: #fffaf7;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  .nosotros-container {
+      display: flex;
+      align-items: left;
+      justify-content: space-between; 
+      padding: 0rem;
+      gap: 6rem;
+    }
+
+    .hero-image img {
+      width: 150%;
+      height: auto;
+      border-radius: 1px;
+    }
+ 
+    .hero-texta {
+      flex: 1;
+      text-align: right;
+      margin-left: auto; 
+      padding-right: 0; 
+      font-family: "Poiret One", sans-serif;
+      font-size: 1.7rem;
+      color: #000;
+      padding: 3rem;
+      margin-top: 180px;
+    }
+
+    .container {
+      display: flex;
+     justify-content: center;
+     align-items: center;
+     max-width: 1900px;
+     margin: 0 auto;
+     padding: 40px 20px;
+        }
+        
+    .text-left, .text-right {
+       flex: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      color: #333;
+      min-width: 20px;
+      white-space: nowrap;
+      }
+        
+      .image-center {
+        flex: 0;
+        text-align: center;
+        margin: 0 0px;
+      }
+        
+    .image-center img {
+        max-width: 700px;  /* Máximo ancho de la imagen (ajusta este valor) */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+        
+        .invitation-text {
+            font-size: 24px;
+            font-style: bold;
+            color: #555;
+            margin-top: 20px;
+        }
+        
+        .names {
+            font-family: "Poiret One", sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .subtitle {
+          font-family: "Great Vibes", cursive;
+            font-size: 69px;
+            font-weight: cursive;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+    #seccion2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .img-wrapper {
+    position: relative;
+    height: 800px; /* Puedes ajustar la altura */
+    width: 100vw;
+    background-image: url('images/foto2.jpg');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Capa oscura para oscurecer solo la imagen */
+  .img-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad si quieres más o menos oscurecido */
+    z-index: 0;
+  }
+
+  .texto-sobre-imagen {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    font-family: "Poiret One", sans-serif;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 90%;
+    z-index: 1; /* Que esté sobre la capa oscura */
+  }
+
+  .img-wrappera {
+    position: relative;
+    height: 600px; /* Puedes ajustar la altura */
+    width: 100vw;
+    background-image: url('images/foto3a.jpg');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+     #seccion3 {
+      background-color: #fbf9f9;
+      text-align: center;
+      padding: 4rem 1rem;
+      font-family: "Poiret One", sans-serif;
+    }
+
+    .contenedor-seccion3 p {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+
+    .contenedor-seccion3 h2 {
+      font-family: "Great Vibes", cursive;
+      font-size: 3.5rem;
+      margin: 1.5rem 0;
+      color: #000;
+    }
+
+    .contenedor-seccion3 img {
+      max-width: 100px;
+      height: auto;
+      margin: 1.5rem auto;
+      display: block;
+    }
+    /* Estilos para la sección */
+   #seccion4 {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+  .img-wrapSper img {
+            max-width: 500px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+   #seccion4 p {
+    font-family: "Poiret One", sans-serif;
+            font-size: 22px;
+            color: #555;
+            margin: 10px 0;
+        }
+  #seccion4 h2 {
+   font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 20px;
+        }      
+        /* Estilos para el contador */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .countdown-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .countdown-label {
+          font-family: "Poiret One", sans-serif;
+            font-size: 18px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+      /* Estilos para la sección 5 */
+        #seccion5 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Primera imagen (ancho completo) */
+        #seccion5 img:first-child {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%); /* Centrado horizontal */
+            display: block;
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        /* Segunda imagen (cruz - centrada) */
+        #seccion5 img:nth-child(2) {
+            max-width: 150px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        #seccion5 h2 {
+           font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        #seccion5 p {
+           font-family: "Poiret One", sans-serif;
+            font-size: 22px;
+            color: #555;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+         #seccion5 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #seccion5a {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #seccion5a h2 {
+           font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin: 20px 0;
+        }
+        .img-wrapperb {
+          position: relative;
+          height: 500px; /* Puedes ajustar la altura */
+          width: 100vw;
+          background-image: url('images/hotel.jpg');
+          background-size: cover;
+          background-position: top;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* Efecto parallax */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #seccion5a p {
+           font-family: "Poiret One", sans-serif;
+            font-size: 22px;
+            color: #555;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+         #seccion5b {
+          text-align: center;
+
+          position: relative; /* Necesario para el overlay */
+          overflow: hidden; /* Evita desbordamientos */
+        }
+
+        #seccion5b img:first-child {
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          display: block;
+          height: 700px; /* Altura fija (ajusta según necesites) */
+          object-fit: cover;
+          object-position: top center; /* Enfoca en la parte superior */
+        }
+
+        #seccion5b img:nth-child(2) {
+            max-width: 150px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+        #seccion5b h2 {
+           font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin: 20px 0;
+        }
+        #seccion5b p {
+           font-family: "Poiret One", sans-serif;
+            font-size: 22px;
+            color: #555;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+         /* Estilos para el mapa */
+        .mapa-container {
+            margin: 30px auto;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .mapa-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Estilos para el botón */
+        .boton-maps {
+            display: inline-block;
+            background-color: #4285F4;
+            color: white;
+            padding: 12px 24px;
+            margin: 15px 0;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .boton-maps:hover {
+            background-color: #3367D6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+ /* Contenedor principal (igual que seccion5b) */
+        #regalos {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Imagen decorativa (como copas.png) */
+         #regalos img:first-child {
+            width: 120px; /* Tamaño fijo para el icono de regalo */
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        /* Estilo para la segunda imagen (Liverpool) - AJUSTA ESTOS VALORES */
+        #regalos img:nth-child(3) {
+            width: 300px; /* Cambia este valor al ancho deseado */
+            max-width: 80%; /* Máximo ancho permitido (responsive) */
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Títulos (estilo consistente) */
+        #regalos h2 {
+          font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        /* Textos (igual que seccion5b) */
+        #regalos p {
+          font-family: "Poiret One", sans-serif;
+            font-size: 23px;
+            color: #555;
+            line-height: 1.6;
+            margin: 10px auto;
+            max-width: 600px;
+        }
+        .img-wrapperc {
+          position: relative;
+          height: 500px; /* Puedes ajustar la altura */
+          width: 100vw;
+          background-image: url('images/foto8a.jpg');
+          background-size: cover;
+          background-position: top;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* Efecto parallax */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        /* Número de evento destacado */
+        .numero-evento {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff383b; /* Tonos cálidos como en eventos de boda */
+            margin: 15px 0;
+        }
+
+        /* Botón (estilo discreto como elementos de seccion5b) */
+        .boton-regalos {
+            display: inline-block;
+            background-color: transparent;
+            color: #555;
+            padding: 10px 25px;
+            margin: 20px 0;
+            border: 1px solid #ff7d7f;
+            border-radius: 4px;
+            font-size: 19px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .boton-regalos:hover {
+            background-color: #f0a3a4;
+        }
+         /* Contenedor principal centrado */
+        #seccion6 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px; /* Ancho óptimo para lectura */
+            margin: 0 auto;
+        }
+
+    .img-wrapperd {
+          position: relative;
+          height: 500px; /* Puedes ajustar la altura */
+          width: 100vw;
+          background-image: url('images/foto10.jpg');
+          background-size: cover;
+          background-position: top;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* Efecto parallax */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        /* Estilos de tipografía */
+        #seccion6 h2 {
+          font-family: "Great Vibes", cursive;
+            font-size: 59px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        #seccion6 p {
+          font-family: "Poiret One", sans-serif;
+            font-size: 24px;
+            color: #555;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        /* Imagen del banco centrada */
+        #seccion6 img {
+            max-width: 250px; /* Tamaño ajustable */
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Destacar información bancaria */
+        .info-banco {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: white;
+            background-color: #ff7d7f;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+/* Contenedor principal */
+        #seccion7 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Imagen */
+        #seccion7 img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Textos */
+        #seccion7 h2 {
+          font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #seccion7 p {
+          font-family: "Poiret One", sans-serif;
+            font-size: 19px;
+            color: #555;
+            line-height: 1.6;
+            margin: 12px auto;
+            max-width: 500px;
+        }
+
+        /* Estilo especial para "Etiqueta" */
+        #seccion7 p:first-of-type {
+          font-family: "Poiret One", sans-serif;
+
+            font-style: italic;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        /* Contenedor destacado para NO NIÑOS */
+        .adultos-only {
+            background-color: #fae3e3;
+            border-left: 4px solid #ff7d7f;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 450px;
+            text-align: center;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .adultos-only h3 {
+          font-family: "Poiret One", sans-serif;
+            color: #ff7d7f;
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .adultos-only p {
+          font-family: "Poiret One", sans-serif;
+            color: #666;
+            font-size: 16px;
+        }
+         .etiqueta {
+          font-family: "Poiret One", sans-serif;
+          font-size: 30px;
+            font-style: italic;
+            color: #000;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .texto-vestimenta {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .negro-destacado {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .nota-importante {
+            font-style: italic;
+            margin: 25px auto;
+            padding: 10px;
+            border-top: 2px solid #eee;
+            border-bottom: 2px solid #eee;
+            max-width: 400px;
+        }
+        #seccion8 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #seccion8 h2 {
+            font-size: 49px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #seccion8 p {
+            font-size: 20px;
+            color: #555;
+            margin: 15px auto;
+            max-width: 500px;
+        }
+
+        /* Estilo para la imagen de Instagram */
+        #seccion8 img {
+            width: 80px; /* Tamaño más pequeño */
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.3s ease; /* Efecto hover opcional */
+        }
+
+        /* Efecto hover para la imagen (opcional) */
+        #seccion8 img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo especial para el hashtag */
+        .hashtag {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E1306C; /* Color similar a Instagram */
+            letter-spacing: 1px;
+            margin: 25px auto;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fae3e3;
+            border-radius: 20px;
+        }
+
+     #seccion9 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #seccion9 h2 {
+            font-size: 49px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #seccion9 p {
+            font-size: 20px;
+            color: #555;
+            margin: 0 auto 30px;
+            max-width: 500px;
+        }
+
+        /* Estilos del formulario */
+        .formulario-confirmacion {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .campo-formulario {
+            margin-bottom: 20px;
+        }
+
+        .campo-formulario label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .campo-formulario input,
+        .campo-formulario select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .boton-enviar {
+            background-color: #e60707;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .boton-enviar:hover {
+            background-color: #fc8d8d;
+        }   
+
+   @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+      height: auto;
+    }
+    .parallax-image {
+      background-attachment: scroll;
+      min-height: 300px;
+      width: 100%;
+    }
+
+    .hero-text {
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-texta {
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+    }
+.mapa-container {
+                height: 250px;
+            }
+    .nosotros-container {
+    flex-direction: column;
+    text-align: center;
+    }
+      .contenedor-seccion3 p {
+    font-size: 1.6rem;
+  }
+
+  .contenedor-seccion3 h2 {
+    font-size: 2.8rem;
+  }
+
+  .contenedor-seccion3 img {
+    max-width: 120px;
+  }
+#seccion5 img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5 h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5 p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+    #seccion5a img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5a h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5a p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+             #seccion5b img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5b h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5b p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+             #regalos h2 {
+                font-size: 28px;
+            }
+            #regalos p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            #seccion6 {
+                padding: 30px 15px;
+            }
+            #seccion6 h2 {
+                font-size: 28px;
+            }
+            #seccion6 p {
+                font-size: 16px;
+            }
+            #seccion6 img {
+                max-width: 180px;
+            }
+    #seccion7 {
+                padding: 30px 15px;
+            }
+            #seccion7 img {
+                max-width: 250px;
+            }
+            #seccion7 h2 {
+                font-size: 28px;
+            }
+            .adultos-only {
+                margin: 30px 10px;
+            }
+  .texto-vestimenta {
+                padding: 0;
+            }
+     #seccion8 {
+                padding: 30px 15px;
+            }
+            #seccion8 h2 {
+                font-size: 28px;
+            }
+            #seccion8 img {
+                width: 70px;
+            }
+            .hashtag {
+                font-size: 18px;
+            }
+  }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+        <!-- Texto a la izquierda -->
+        <div class="text-left">
+            <!-- Puedes agregar aquí el texto que desees para la izquierda -->
+             <div class="subtitle">Nos Casamos</div>
+        </div>       
+        <div class="image-center">
+            <img src="images/foto1.png">
+            <p class="invitation-text">"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
+        </div>      
+        <!-- Texto a la derecha -->
+        <div class="text-right">        
+            <div class="names">MARIANA & GABRIEL</div>
+            <!-- Puedes agregar aquí más texto si lo deseas -->
+        </div>
+    </div>
+<!--   <header class="hero-container">
+    <div class="hero-text">
+      <h1>Nos Casamos</h1>
+      <p>"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
+    </div>
+    <div class="parallax-image"></div>
+  </header> -->
+
+  <section id="nosotros">
+    <div class="nosotros-container">
+      <div class="hero-image">
+        <img src="images/fondorosasreds2a.png"  />
+      </div>
+      <div class="hero-texta">
+        <p>Nosotros...</p>
+        <h2>Mariana Ortiz Franco</h2>
+        <h2>Y</h2>
+        <h2>Gabriel Nava Reyes</h2>
+        <p>Queremos invitarte a celebrar con nosotros</p>
+        <p>nuestra reunión en matrimonio.</p>
+        <p>SÁBADO 22 DE NOVIEMBRE 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="seccion2">
+    <div class="img-wrapper">
+      <div class="texto-sobre-imagen">
+        <p>Las aguas no podrán nunca apagar el amor...</p>
+        <p>Y jamás lo ahogarán los ríos.</p>
+        <p>CANTARES 8:7</p>
+      </div>
+    </div>
+  </section>
+   <section id="seccion3">
+    <div class="contenedor-seccion3">
+      <p>Con la bendición de Dios y de nuestros</p>
+      <h2>Padres</h2>
+      <img src="images/vestidonovia.png" />
+      <p>Paraíso Franco</p>
+      <p>&</p>
+      <p>José Ortiz</p>
+      <img src="images/trajenovio.png"/>
+      <p>Guadalupe Reyes</p>
+      <p>&</p>
+      <p>Juan Nava</p>
+      <img src="images/anillos.png"/>
+      <p>Y la compañía de nuestros</p>
+      <h2>Padrinos</h2>
+    </div>
+  </section>
+  <section id="seccion2a">
+    <div class="img-wrappera">
+    </div>
+  </section>
+  <section id="seccion4">
+        <h2>Guarda la Fecha</h2>
+        <div class="img-wrapSper">
+            <img src="images/calendario.png" alt="Calendario" />
+        </div>
+        <p>Faltan</p>
+        
+        <!-- Contador regresivo -->
+        <div id="countdown">
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <div class="countdown-label">Segundos</div>
+            </div>
+        </div>     
+        <p>Los momentos que compartes con quienes más amas,<br>se vuelven recuerdos inolvidables y permanecen vivos por siempre...</p>
+    </section>
+  <section id="seccion5">
+        <img src="images/iglesia2.jpg"/>
+        <img src="images/cruz.png"/>      
+        <h2>Ceremonia Religiosa</h2>
+        <p>
+            📍 Joaquín Gallo 101, Santa Fe, Zedec Sta Fe, Álvaro Obregón, CP 01219 CDMX<br>
+            🕔 4:00 PM
+        </p>
+        <div class="mapa-container">
+                <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888244552543!2d-99.2547229243385!3d19.426971981873722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d20139295ea8a5%3A0x0!2sJoaqu%C3%ADn%20Gallo%20101%2C%20Santa%20Fe%2C%20Zedec%20Sta%20F%C3%A9%2C%20%C3%81lvaro%20Obreg%C3%B3n%2C%2001219%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1718752345678!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- Botón para abrir en Google Maps -->
+            <a href="https://www.google.com/maps/place/Joaqu%C3%ADn+Gallo+101,+Santa+Fe,+Zedec+Sta+F%C3%A9,+%C3%81lvaro+Obreg%C3%B3n,+01219+Ciudad+de+M%C3%A9xico,+CDMX/@19.4269719,-99.2547229,17z/data=!3m1!4b1!4m6!3m5!1s0x85d20139295ea8a5:0x0!8m2!3d19.4269669!4d-99.252148!16s%2Fg%2F11c5m7t1f7?entry=ttu" class="boton-maps" target="_blank">
+                Abrir en Google Maps
+            </a>
+        </div>
+    </section>
+    <div class="img-wrapperb">
+    </div>
+  <section id="seccion5a">
+
+    <h2>Ceremonia Civil</h2>
+    <p>
+      📍 Terraza del Hotel JW Marriot Santa Fe, Av. Santa Fe 160, Álvaro Obregón, CP 01376 CDMX<br>
+      🕔 6:15 PM
+    </p>
+    <div class="mapa-container">
+        <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.258150485684!2d-99.2679239243388!3d19.3599407818799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2017a5a1a6a9f%3A0x82c0e7db6c2e3c1e!2sJW%20Marriott%20Hotel%20Mexico%20City%20Santa%20Fe!5e0!3m2!1ses-419!2smx!4v1718752345678!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+<!-- Botón para abrir en Google Maps -->
+<a href="https://www.google.com/maps/place/JW+Marriott+Hotel+Mexico+City+Santa+Fe/@19.3599408,-99.2679239,17z/data=!3m1!4b1!4m9!3m8!1s0x85d2017a5a1a6a9f:0x82c0e7db6c2e3c1e!5m2!4m1!1i2!8m2!3d19.3599358!4d-99.265349!16s%2Fg%2F1thk7p7k?entry=ttu" class="boton-maps" target="_blank">
+    Abrir en Google Maps
+</a>
+  </section>
+<section id="seccion5b">
+        <img src="images/foto7a.jpg"/>
+        <img src="images/copas.png"/>  
+        <h2>Recepción</h2>
+        <p>
+            📍 Salón Rothko-Miro-Picasso del Hotel JW Marriot Santa Fe<br>
+            🕔 7:00 PM
+        </p>
+</section>
+    <div class="img-wrapperc">
+    </div>
+<section id="regalos">
+        <img src="images/regalo.png"> 
+        <h2>Mesa de Regalos</h2>
+        <img src="images/liverpool.png"> 
+        <p>Número de Evento</p>
+        <p class="numero-evento">51723010</p>
+        <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51723010" class="boton-regalos" target="_blank">Ver Mesa de Regalos</a>
+        <p>Agradecemos mucho todo su amor y apoyo al iniciar esta etapa de formar nuestro hogar.</p>
+    </section>
+    <div class="img-wrapperd">
+    </div>
+<section id="seccion6">
+        <p>O si deseas agregar kilómetros y experiencias a nuestra</p>
+        <h2>Luna de Miel</h2>
+        <p>Puedes hacerlo a la siguiente cuenta:</p>
+        <img src="images/banco.png" alt="Datos Bancarios">
+        <div class="info-banco">CLABE: 012 180 0155 0874 6015</div>
+        <div class="info-banco">Débito: 4152 3137 9534 8726</div>
+    </section>
+  <section id="seccion7">
+        <img src="images/foto9.png">
+        <h2>Código de Vestimenta</h2>
+        <span class="etiqueta">Etiqueta</span>
+        <div class="texto-vestimenta">
+            <p>El color blanco se encuentra reservado únicamente para la novia.
+            Para esta ocasión, te pedimos elijas un atuendo completamente de <span class="negro-destacado">NEGRO</span>, evitando detalles grandes o estampados que resalten cualquier otro color. Esto, para mantener la elegancia de nuestro evento.</p>
+             <p class="nota-importante">"NO vestido corto o de cóctel"</p>
+        <!-- Contenedor especial para NO NIÑOS -->
+        <div class="adultos-only">
+            <h3>NO NIÑOS</h3>
+            <p>Adoramos a los pequeños, sin embargo esta celebración está destinada solo para adultos.</p>
+            <p>¡Agradecemos su comprensión!</p>
+        </div>
+    </section>
+    <section id="seccion8">
+        <h2>Hashtag del Evento</h2>
+        <p>Ayúdanos a guardar memorias de este gran día!</p>
+        <p>Comparte con nosotros todas tus fotografías del evento, usando el siguiente #hashtag en todas tus publicaciones de Facebook e Instagram.</p>
+        <img src="images/instagram.png">
+        <p class="hashtag">#BodaMarianaGabriel2025</p>
+    </section>
+
+      <section id="seccion9">
+        <h2>Confirma tu Asistencia</h2>
+        <p>Llena el siguiente formulario y no olvides dar clic en el botón de enviar, nosotros 
+          revisaremos tu confirmación y te agregaremos a nuestra lista de invitados.</p>
+          
+        <form class="formulario-confirmacion" action="#" method="POST">
+            <div class="campo-formulario">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            <div class="campo-formulario">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            
+            <div class="campo-formulario">
+                <label for="asistencia">Confirmación</label>
+                <select id="asistencia" name="asistencia" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="si">Sí asistiré</option>
+                    <option value="no">No asistiré</option>
+                </select>
+            </div>
+            
+            <div class="campo-formulario">
+                <label for="confirmados">Número de Confirmados</label>
+                <select id="confirmados" name="confirmados" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>         
+            <button type="submit" class="boton-enviar">Enviar</button>
+        </form>
+    </section>
+ <script>
+        // Fecha objetivo: 22 de noviembre de 2025 a las 4:00 PM
+        const targetDate = new Date('November 22, 2025 16:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Cálculos de tiempo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Actualizar el HTML
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            // Si la cuenta regresiva termina
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = '<div style="color: #ff6b6b;">¡El gran día ha llegado!</div>';
+            }
+        }
+
+        // Actualizar cada segundo
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Ejecutar inmediatamente
+    </script>
+</body>
+</html>
