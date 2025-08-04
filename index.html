@@ -1239,7 +1239,7 @@
         <p>Llena el siguiente formulario y no olvides dar clic en el botón de enviar, nosotros 
           revisaremos tu confirmación y te agregaremos a nuestra lista de invitados.</p>
           
-        <form class="formulario-confirmacion" action="#" method="POST">
+        <form class="formulario-confirmacion" id="formConfirmacion" method="POST">
             <div class="campo-formulario">
                 <label for="nombre">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -1270,7 +1270,7 @@
                     <option value="5">5</option>
                 </select>
             </div>         
-            <button type="submit" class="boton-enviar">Enviar</button>
+            <button type="submit" class="boton-enviar" id="submitBtn">Enviar</button>
         </form>
     </section>
  <script>
@@ -1305,65 +1305,55 @@
         updateCountdown(); // Ejecutar inmediatamente
     </script>
     <script>
-      document.getElementById('formConfirmacion').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Obtener datos del formulario
-          const formData = {
-              nombre: document.getElementById('nombre').value,
-              telefono: document.getElementById('telefono').value,
-              asistencia: document.getElementById('asistencia').value,
-              confirmados: document.getElementById('confirmados').value
-          };
-          
-          // URL de tu Google Apps Script (reemplázala)
+    document.getElementById('formConfirmacion').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    
+    try {
+        // Mostrar estado de carga
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+        
+        // Obtener datos del formulario
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+        
+        // URL de tu Google Apps Script (IMPORTANTE: usa la URL de despliegue)
           const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbw_rtomPw_uPlvp1JjdboD5aPiiadshlraUlFdv4iY3CltMiX6P3CqTBMIi5BHt0koXNA/exec';
-          
-          // Enviar a Google Sheets
-          fetch(googleScriptUrl, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(formData)
-          })
-          .then(() => {
-              // Preparar mensaje para WhatsApp
-              const mensaje = `Confirmación de boda:\n\n` +
-                             `Nombre: ${formData.nombre}\n` +
-                             `Teléfono: ${formData.telefono}\n` +
-                             `Asistencia: ${formData.asistencia}\n` +
-                             `Número de personas: ${formData.confirmados}`;
-              
-              // Codificar el mensaje para URL
-              const mensajeCodificado = encodeURIComponent(mensaje);
-              
-              // Tu número de WhatsApp (reemplázalo, incluye código de país)
-              const numeroWhatsApp = '525518602163';
-              
-              // Abrir WhatsApp con el mensaje
-              window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
-              
-              // Mostrar mensaje de éxito
-              alert('¡Gracias por confirmar!.');
-              
-              // Limpiar formulario
-              document.getElementById('formConfirmacion').reset();
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('Hubo un error al enviar la confirmación. Por favor inténtalo de nuevo.');
-          });
-      });
-
-      const boton = document.querySelector('.boton-enviar');
-      boton.classList.add('loading');
-      boton.disabled = true;
-
-      // Y en el .then() y .catch(), añade:
-      boton.classList.remove('loading');
-      boton.disabled = false;
-    </script>
+        
+        // Enviar a Google Sheets como form-data
+        const response = await fetch(googleScriptUrl, {
+            method: 'POST',
+            body: new URLSearchParams(data),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+        
+        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+        
+        // Enviar a WhatsApp
+        const mensaje = `Confirmación de boda:\n\n` +
+                       `Nombre: ${data.nombre}\n` +
+                       `Teléfono: ${data.telefono}\n` +
+                       `Asistencia: ${data.asistencia}\n` +
+                       `Número de personas: ${data.confirmados}`;
+        
+        const numeroWhatsApp = '525518602163'; // Reemplaza con tu número
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        
+        // Mensaje de éxito
+        alert('¡Confirmación enviada con éxito!');
+        this.reset();
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al enviar: ' + error.message);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+    }
+});
+</script>
 </body>
 </html>
