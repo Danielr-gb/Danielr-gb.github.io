@@ -38,9 +38,15 @@
       margin-bottom: 1rem;
     }
 
-    . -text p {
+    .hero-text p {
       font-size: 1.8rem;
       font-style: italic;
+    }
+
+    .hero-container {
+      display: flex;
+      height: 740px;
+      overflow: hidden;
     }
 
     .parallax-image {
@@ -54,46 +60,23 @@
       margin-top: 10px;
       margin-right: 10px;
     }
-    
-   #nosotros {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .nosotros-container {
+      display: flex;
+      align-items: left;
+      justify-content: space-between; 
+      padding: 0rem;
+      gap: 6rem;
+    }
 
-.imagen-superior, .imagen-inferior {
-  width: 100vw; /* Ocupa el ancho completo de la ventana */
-  overflow: hidden;
-}
-
-.imagen-superior img, .imagen-inferior img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.contenedor-centrado {
-  width: 100%;
-  max-width: 800px; /* Ancho máximo para el texto */
-  padding: 40px 20px;
-  margin: 0 auto;
-}
-
-.hero-texta {
-  text-align: center;
-}
-
-.hero-texta h2 {
-  margin: 15px 0;
-}
-
-.hero-texta p {
-  margin: 10px 0;
-  line-height: 1.6;
-}
-.hero-texta {
+    .hero-image img {
+      width: 150%;
+      height: auto;
+      border-radius: 1px;
+    }
+ 
+    .hero-texta {
       flex: 1;
-      text-align: center;
+      text-align: right;
       margin-left: auto; 
       padding-right: 0; 
       font-family: "Poiret One", sans-serif;
@@ -236,69 +219,56 @@
       margin: 1.5rem auto;
       display: block;
     }
-   /* Estilos generales para la sección */
-#seccion4 {
-    text-align: center;
-    padding: 40px 20px;
+    /* Estilos para la sección */
+   #seccion4 {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+  .img-wrapSper img {
+            max-width: 500px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+   #seccion4 p {
     font-family: "Poiret One", sans-serif;
-    background-color: #f9f9f9;
-    max-width: 100%;
-    box-sizing: border-box;
-}
+            font-size: 22px;
+            color: #555;
+            margin: 10px 0;
+        }
+  #seccion4 h2 {
+   font-family: "Great Vibes", cursive;
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 20px;
+        }      
+        /* Estilos para el contador */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-/* Estilos para la imagen del calendario */
-.img-wrapSper {
-    margin: 20px auto;
-    max-width: 100%;
-}
+        .countdown-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.calendario-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Estilos para el contador regresivo */
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    flex-wrap: wrap;
-}
-
-.countdown-box {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    min-width: 80px;
-    text-align: center;
-}
-
-.countdown-label {
-    font-family: "Poiret One", sans-serif;
-    font-size: 18px;
-    color: #777;
-    margin-top: 5px;
-}
-
-/* Textos */
-.faltan-text {
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.frase-final {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-top: 20px;
-    font-style: italic;
-}
+        .countdown-label {
+          font-family: "Poiret One", sans-serif;
+            font-size: 18px;
+            color: #777;
+            margin-top: 5px;
+        }
 
       /* Estilos para la sección 5 */
         #seccion5 {
@@ -806,238 +776,133 @@
         }   
 
    @media (max-width: 768px) {
-  body {
-    font-size: 1.1rem;
-  }
+    .hero-container {
+      flex-direction: column;
+      height: auto;
+    }
+    .parallax-image {
+      background-attachment: scroll;
+      min-height: 300px;
+      width: 100%;
+    }
 
-  /* Header */
-  .container {
+    .hero-text {
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-texta {
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+    }
+.mapa-container {
+                height: 250px;
+            }
+    .nosotros-container {
     flex-direction: column;
-    padding: 20px 10px;
-  }
-  
-  .text-left, .text-right {
-    padding: 10px;
-    font-size: 1.5rem;
-    white-space: normal;
-  }
-  
-  .image-center img {
-    max-width: 100%;
-    margin: 10px 0;
-  }
-  
-  .invitation-text {
-    font-size: 1.2rem;
-    margin-top: 10px;
-  }
-  
-  .names {
-    font-size: 2rem;
-  }
-  
-  .subtitle {
-    font-size: 3rem;
-  }
-
-  /* Sección Nosotros */
-  .hero-texta {
-    font-size: 1.3rem;
-    padding: 1.5rem;
-    margin-top: 50px;
-  }
-  
-  .hero-texta h2 {
-    font-size: 1.8rem;
-    margin: 10px 0;
-  }
-
-  /* Sección Padres */
-  .contenedor-seccion3 p {
-    font-size: 1.3rem;
+    text-align: center;
+    }
+      .contenedor-seccion3 p {
+    font-size: 1.6rem;
   }
 
   .contenedor-seccion3 h2 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
 
   .contenedor-seccion3 img {
-    max-width: 80px;
+    max-width: 120px;
+  }
+#seccion5 img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5 h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5 p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+    #seccion5a img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5a h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5a p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+             #seccion5b img:first-child {
+                max-height: 250px;
+            }
+            
+            #seccion5b h2 {
+                font-size: 28px;
+            }
+            
+            #seccion5b p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+             #regalos h2 {
+                font-size: 28px;
+            }
+            #regalos p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            #seccion6 {
+                padding: 30px 15px;
+            }
+            #seccion6 h2 {
+                font-size: 28px;
+            }
+            #seccion6 p {
+                font-size: 16px;
+            }
+            #seccion6 img {
+                max-width: 180px;
+            }
+    #seccion7 {
+                padding: 30px 15px;
+            }
+            #seccion7 img {
+                max-width: 250px;
+            }
+            #seccion7 h2 {
+                font-size: 28px;
+            }
+            .adultos-only {
+                margin: 30px 10px;
+            }
+  .texto-vestimenta {
+                padding: 0;
+            }
+     #seccion8 {
+                padding: 30px 15px;
+            }
+            #seccion8 h2 {
+                font-size: 28px;
+            }
+            #seccion8 img {
+                width: 70px;
+            }
+            .hashtag {
+                font-size: 18px;
+            }
   }
 
-  #seccion4 {
-        padding: 30px 15px;
-    }
-    
-    .calendario-img {
-        max-width: 250px;
-    }
-    
-    #countdown {
-        gap: 10px;
-        font-size: 20px;
-    }
-    
-    .countdown-box {
-        min-width: 70px;
-        padding: 8px 10px;
-    }
-    
-    .countdown-label {
-        font-size: 14px;
-    }
-    
-    .faltan-text {
-        font-size: 1.3rem;
-    }
-    
-    .frase-final {
-        font-size: 1.1rem;
-    }
-  /* Secciones de ubicación */
-  #seccion5, #seccion5a, #seccion5b, #regalos, #seccion6, #seccion7, #seccion8, #seccion9 {
-    padding: 30px 15px;
-  }
-  
-  #seccion5 img:first-child, #seccion5b img:first-child {
-    height: 200px;
-  }
-  
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2, #seccion8 h2, #seccion9 h2 {
-    font-size: 2.2rem;
-  }
-  
-  #seccion5 p, #seccion5a p, #seccion5b p, #regalos p, #seccion6 p, #seccion7 p, #seccion8 p, #seccion9 p {
-    font-size: 1.1rem;
-    padding: 0 5px;
-  }
-
-  /* Mapas */
-  .mapa-container {
-    height: 250px;
-    margin: 15px auto;
-  }
-
-  /* Imágenes con efecto parallax */
-  .img-wrapper, .img-wrappera, .img-wrapperb, .img-wrapperc, .img-wrapperd {
-    height: 300px;
-    background-attachment: scroll;
-  }
-  
-  .texto-sobre-imagen {
-    font-size: 1.3rem;
-    padding: 0.5rem 1rem;
-  }
-
-  /* Mesa de regalos */
-  #regalos img:nth-child(3) {
-    width: 200px;
-  }
-  
-  .numero-evento {
-    font-size: 1.3rem;
-  }
-
-  /* Datos bancarios */
-  .info-banco {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    margin: 5px 0;
-  }
-
-  /* Vestimenta */
-  .etiqueta {
-    font-size: 1.5rem;
-  }
-  
-  .adultos-only {
-    margin: 20px 5px;
-    padding: 15px;
-  }
-  
-  .adultos-only h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Formulario */
-  .formulario-confirmacion {
-    padding: 20px;
-  }
-  
-  .campo-formulario {
-    margin-bottom: 15px;
-  }
-  
-  .campo-formulario input, 
-  .campo-formulario select {
-    padding: 10px;
-    font-size: 1rem;
-  }
-  
-  .boton-enviar {
-    padding: 10px 20px;
-  }
-
-  /* Hashtag */
-  .hashtag {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-  
-  #seccion8 img {
-    width: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Ajustes adicionales para pantallas muy pequeñas */
-  .hero-texta {
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
-  
-  .hero-texta h2 {
-    font-size: 1.5rem;
-  }
-  
-  #countdown {
-    font-size: 0.9rem;
-  }
-  
-  .countdown-box {
-    padding: 5px 8px;
-  }
-  
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2, #seccion8 h2, #seccion9 h2 {
-    font-size: 1.8rem;
-  }
-  
-  .img-wrapper, .img-wrappera, .img-wrapperb, .img-wrapperc, .img-wrapperd {
-    height: 250px;
-  }
-}
-  @media (max-width: 480px) {
-    .calendario-img {
-        max-width: 200px;
-    }
-    
-    #countdown {
-        font-size: 18px;
-    }
-    
-    .countdown-box {
-        min-width: 60px;
-        padding: 6px 8px;
-    }
-    
-    .countdown-label {
-        font-size: 12px;
-    }
-    
-    .faltan-text, .frase-final {
-        font-size: 1rem;
-    }
-}
   </style>
 </head>
 <body>
@@ -1065,27 +930,22 @@
     <div class="parallax-image"></div>
   </header> -->
 
-<section id="nosotros">
-  <div class="imagen-superior">
-    <img src="images/fondorosasreds5.png" />
-  </div>
-  
-  <div class="contenedor-centrado">
-    <div class="hero-texta">
-      <p>Nosotros...</p>
-      <h2>Mariana Ortiz Franco</h2>
-      <h2>Y</h2>
-      <h2>Gabriel Nava Reyes</h2>
-      <p>Queremos invitarte a celebrar con nosotros</p>
-      <p>nuestra reunión en matrimonio.</p>
-      <p>SÁBADO 22 DE NOVIEMBRE 2025</p>
+  <section id="nosotros">
+    <div class="nosotros-container">
+      <div class="hero-image">
+        <img src="images/fondorosasreds2a.png"  />
+      </div>
+      <div class="hero-texta">
+        <p>Nosotros...</p>
+        <h2>Mariana Ortiz Franco</h2>
+        <h2>Y</h2>
+        <h2>Gabriel Nava Reyes</h2>
+        <p>Queremos invitarte a celebrar con nosotros</p>
+        <p>nuestra reunión en matrimonio.</p>
+        <p>SÁBADO 22 DE NOVIEMBRE 2025</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="imagen-inferior">
-    <img src="images/fondorosasreds5b.png" />
-  </div>
-</section>
+  </section>
 
   <section id="seccion2">
     <div class="img-wrapper">
@@ -1117,34 +977,34 @@
     <div class="img-wrappera">
     </div>
   </section>
-<section id="seccion4">
-    <h2>Guarda la Fecha</h2>
-    <div class="img-wrapSper">
-        <img src="images/calendario.png" alt="Calendario de la boda" class="calendario-img"/>
-    </div>
-    <p class="faltan-text">Faltan</p>
-    
-    <!-- Contador regresivo -->
-    <div id="countdown">
-        <div class="countdown-box">
-            <span id="days">00</span>
-            <div class="countdown-label">Días</div>
+  <section id="seccion4">
+        <h2>Guarda la Fecha</h2>
+        <div class="img-wrapSper">
+            <img src="images/calendario.png" alt="Calendario" />
         </div>
-        <div class="countdown-box">
-            <span id="hours">00</span>
-            <div class="countdown-label">Horas</div>
-        </div>
-        <div class="countdown-box">
-            <span id="minutes">00</span>
-            <div class="countdown-label">Minutos</div>
-        </div>
-        <div class="countdown-box">
-            <span id="seconds">00</span>
-            <div class="countdown-label">Segundos</div>
-        </div>
-    </div>     
-    <p class="frase-final">Los momentos que compartes con quienes más amas,<br>se vuelven recuerdos inolvidables y permanecen vivos por siempre...</p>
-</section>
+        <p>Faltan</p>
+        
+        <!-- Contador regresivo -->
+        <div id="countdown">
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <div class="countdown-label">Segundos</div>
+            </div>
+        </div>     
+        <p>Los momentos que compartes con quienes más amas,<br>se vuelven recuerdos inolvidables y permanecen vivos por siempre...</p>
+    </section>
   <section id="seccion5">
         <img src="images/iglesia2.jpg"/>
         <img src="images/cruz.png"/>      
@@ -1303,67 +1163,6 @@
         // Actualizar cada segundo
         const countdownTimer = setInterval(updateCountdown, 1000);
         updateCountdown(); // Ejecutar inmediatamente
-    </script>
-    <script>
-      document.getElementById('formConfirmacion').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Obtener datos del formulario
-          const formData = {
-              nombre: document.getElementById('nombre').value,
-              telefono: document.getElementById('telefono').value,
-              asistencia: document.getElementById('asistencia').value,
-              confirmados: document.getElementById('confirmados').value
-          };
-          
-          // URL de tu Google Apps Script (reemplázala)
-          const googleScriptUrl = 'InvitacionBoda';
-          
-          // Enviar a Google Sheets
-          fetch(googleScriptUrl, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(formData)
-          })
-          .then(() => {
-              // Preparar mensaje para WhatsApp
-              const mensaje = `Confirmación de boda:\n\n` +
-                             `Nombre: ${formData.nombre}\n` +
-                             `Teléfono: ${formData.telefono}\n` +
-                             `Asistencia: ${formData.asistencia}\n` +
-                             `Número de personas: ${formData.confirmados}`;
-              
-              // Codificar el mensaje para URL
-              const mensajeCodificado = encodeURIComponent(mensaje);
-              
-              // Tu número de WhatsApp (reemplázalo, incluye código de país)
-              const numeroWhatsApp = '525518602163';
-              
-              // Abrir WhatsApp con el mensaje
-              window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
-              
-              // Mostrar mensaje de éxito
-              alert('¡Gracias por confirmar!.');
-              
-              // Limpiar formulario
-              document.getElementById('formConfirmacion').reset();
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('Hubo un error al enviar la confirmación. Por favor inténtalo de nuevo.');
-          });
-      });
-
-      const boton = document.querySelector('.boton-enviar');
-      boton.classList.add('loading');
-      boton.disabled = true;
-
-      // Y en el .then() y .catch(), añade:
-      boton.classList.remove('loading');
-      boton.disabled = false;
     </script>
 </body>
 </html>
