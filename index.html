@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invitación de Boda</title>
   <!-- Fuente cursiva completa -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
+    @font-face {
+       font-family: 'Bionetha';
+       src: url('fonts/Bionetha.woff2') format('woff2'),
+            url('fonts/Bionetha.woff') format('woff');
+       /* Agrega más formatos si es necesario */
+     }
         * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: "Poiret One", sans-serif;
       font-style: normal;
@@ -29,8 +31,9 @@
     }
 
     h1, h2, h3 {
-      font-family: "Great Vibes", cursive;
+      font-family: "Bionetha", sans-serif;
       font-style: normal;
+      background-color: #fbf9f9;
     }
 
     .hero-text h1 {
@@ -42,20 +45,137 @@
       font-size: 1.8rem;
       font-style: italic;
     }
+    /* ----- DISEÑO GENERAL ----- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh; /* Ocupa toda la altura */
+}
 
-    .parallax-image {
-      flex: 0.9;
-      background-image: url('images/foto1.jpg'); /* Tu ruta real */
-      background-size: 44% auto;
-      background-repeat: no-repeat;
-      background-position: center right;
-      background-attachment: fixed;
-      background-color: #fffaf7;
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-    
-   #nosotros {
+.text-left, .text-right {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  color: #333;
+  min-width: 20px;
+  white-space: nowrap;
+}
+
+.image-center {
+  flex: 0;
+  text-align: center;
+  margin: 0 0px;
+}
+
+.image-center img {
+  max-width: 700px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.invitation-text {
+  margin-top: 20px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* ----- BOTÓN DE MÚSICA ----- */
+.play-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  cursor: pointer;
+  position: static;
+  position: relative;
+}
+
+.play-button::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 16px solid gray;  /* color gris para el triángulo */
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.play-label {
+  text-align: center;
+  color: gray;
+  font-size: 14px;
+  margin-top: 6px;
+  user-select: none;
+}
+
+/* ----- EFECTO DEL SOBRE (SOLO MÓVIL) ----- */
+.sobre-arriba, .sobre-abajo {
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  transition: transform 1s ease;
+  z-index: 2;
+}
+
+.sobre-arriba {
+  top: 0;
+}
+
+.sobre-abajo {
+  top: 180px; /* ajusta según tu diseño */
+}
+.sobre-abajo {
+  position: absolute;
+  top: 180px; /* ajusta según diseño */
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  transition: transform 1s ease, opacity 0.5s ease;
+  z-index: 2;
+  opacity: 1;
+}
+
+.sobre-abajo.oculto {
+  opacity: 0;
+  pointer-events: none; /* para evitar que bloquee clics */
+}
+
+/* Contenido oculto inicialmente */
+.contenido-invitacion {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  position: relative;
+  z-index: 1;
+  margin: 140px auto 160px auto;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sobre-arriba,
+.sobre-abajo {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+#nosotros {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,9 +271,9 @@
         }
         
         .subtitle {
-          font-family: "Great Vibes", cursive;
-            font-size: 69px;
-            font-weight: cursive;
+          font-family: "Bionetha", sans-serif;
+            font-size: 129px;
+            font-weight: normal;
             margin-bottom: 20px;
             color: #444;
         }
@@ -224,7 +344,7 @@
     }
 
     .contenedor-seccion3 h2 {
-      font-family: "Great Vibes", cursive;
+      font-family: "Bionetha", sans-serif;
       font-size: 3.5rem;
       margin: 1.5rem 0;
       color: #000;
@@ -326,7 +446,7 @@
         }
 
         #seccion5 h2 {
-           font-family: "Great Vibes", cursive;
+           font-family: "Bionetha", cursive;
             font-size: 50px;
             color: #333;
             margin: 20px 0;
@@ -353,7 +473,7 @@
             margin: 0 auto;
         }
         #seccion5a h2 {
-           font-family: "Great Vibes", cursive;
+           font-family: "Bionetha", cursive;
             font-size: 50px;
             color: #333;
             margin: 20px 0;
@@ -402,7 +522,7 @@
             display: block;
         }
         #seccion5b h2 {
-           font-family: "Great Vibes", cursive;
+           font-family: "Bionetha", cursive;
             font-size: 50px;
             color: #333;
             margin: 20px 0;
@@ -481,7 +601,7 @@
 
         /* Títulos (estilo consistente) */
         #regalos h2 {
-          font-family: "Great Vibes", cursive;
+          font-family: "Bionetha", cursive;
             font-size: 50px;
             color: #333;
             margin: 20px 0;
@@ -558,7 +678,7 @@
         }
         /* Estilos de tipografía */
         #seccion6 h2 {
-          font-family: "Great Vibes", cursive;
+          font-family: "Bionetha", cursive;
             font-size: 59px;
             color: #333;
             margin: 15px 0;
@@ -580,18 +700,6 @@
             margin: 20px auto;
             display: block;
         }
-
-        /* Destacar información bancaria */
-        .info-banco {
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
-            color: white;
-            background-color: #ff7d7f;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px 0;
-        }
 /* Contenedor principal */
         #seccion7 {
             text-align: center;
@@ -602,7 +710,7 @@
 
         /* Imagen */
         #seccion7 img {
-            max-width: 300px;
+            max-width: 200px;
             width: 100%;
             height: auto;
             margin: 0 auto 30px;
@@ -612,7 +720,13 @@
 
         /* Textos */
         #seccion7 h2 {
-          font-family: "Great Vibes", cursive;
+          font-family: "Bionetha", cursive;
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+         #seccion7 h3 {
+          font-family: "Bionetha", cursive;
             font-size: 50px;
             color: #333;
             margin-bottom: 20px;
@@ -620,7 +734,7 @@
 
         #seccion7 p {
           font-family: "Poiret One", sans-serif;
-            font-size: 19px;
+            font-size: 22px;
             color: #555;
             line-height: 1.6;
             margin: 12px auto;
@@ -635,7 +749,50 @@
             color: #888;
             margin-bottom: 25px;
         }
+/* Contenedor principal */
+        #seccion7 {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
+        /* Imagen */
+        #seccion7a img {
+            max-width: 1200px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Textos */
+        #seccion7a h2 {
+          font-family: "Bionetha", cursive;
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #seccion7a p {
+          font-family: "Poiret One", sans-serif;
+            font-size: 22px;
+            color: #555;
+            line-height: 1.6;
+            margin: 12px auto;
+            text-align: center;
+            max-width: 700px;
+        }
+
+        /* Estilo especial para "Etiqueta" */
+        #seccion7a p:first-of-type {
+          font-family: "Poiret One", sans-serif;
+
+            font-style: italic;
+            color: #888;
+            margin-bottom: 25px;
+        }
         /* Contenedor destacado para NO NIÑOS */
         .adultos-only {
             background-color: #fae3e3;
@@ -870,7 +1027,7 @@
     }
     
     .calendario-img {
-        max-width: 250px;
+        max-width: 350px;
     }
     
     #countdown {
@@ -895,19 +1052,19 @@
         font-size: 1.1rem;
     }
   /* Secciones de ubicación */
-  #seccion5, #seccion5a, #seccion5b, #regalos, #seccion6, #seccion7, #seccion8, #seccion9 {
+  #seccion5, #seccion5a, #seccion5b, #regalos, #seccion6, #seccion7,#seccion7a, #seccion8, #seccion9 {
     padding: 30px 15px;
   }
   
   #seccion5 img:first-child, #seccion5b img:first-child {
-    height: 200px;
+    height: 500px;
   }
   
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2, #seccion8 h2, #seccion9 h2 {
+  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2,#seccion7a h2, #seccion8 h2, #seccion9 h2 {
     font-size: 2.2rem;
   }
   
-  #seccion5 p, #seccion5a p, #seccion5b p, #regalos p, #seccion6 p, #seccion7 p, #seccion8 p, #seccion9 p {
+  #seccion5 p, #seccion5a p, #seccion5b p, #regalos p, #seccion6 p, #seccion7 p, #seccion7a h2,#seccion8 p, #seccion9 p {
     font-size: 1.1rem;
     padding: 0 5px;
   }
@@ -987,6 +1144,38 @@
   #seccion8 img {
     width: 60px;
   }
+
+  #seccion7 img {
+    width: 100px;
+  }
+
+  .parallax-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  background-image: url('images/foto2.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: translateY(-20%);
+  z-index: 1;
+  will-change: transform;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+}
 }
 
 @media (max-width: 480px) {
@@ -1008,7 +1197,7 @@
     padding: 5px 8px;
   }
   
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2, #seccion8 h2, #seccion9 h2 {
+  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2,#seccion7a h2, #seccion8 h2, #seccion9 h2 {
     font-size: 1.8rem;
   }
   
@@ -1018,7 +1207,7 @@
 }
   @media (max-width: 480px) {
     .calendario-img {
-        max-width: 200px;
+        max-width: 350px;
     }
     
     #countdown {
@@ -1038,25 +1227,124 @@
         font-size: 1rem;
     }
 }
+@media (min-width: 768px) {
+  /* Oculta sobres en pantallas grandes */
+  .sobre-arriba,
+  .sobre-abajo {
+    display: none !important;
+  }
+
+  .container {
+    flex-direction: row;
+    padding: 80px 40px;
+  }
+
+    .contenido-invitacion {
+    opacity: 1 !important;
+    transform: none !important;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 40px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .text-left, .image-center {
+    width: 100%;
+  }
+
+  .image-center img {
+    max-width: 90%;
+  }
+
+  .invitation-text {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* Desactiva el background fijo para que no cause problemas */
+  .img-wrapper,
+  .img-wrappera,
+  .img-wrapperb,
+  .img-wrapperc,
+  .img-wrapperd {
+    background-attachment: scroll !important;
+    background-image: none !important; /* Quitamos el background para usar img */
+    height: 600px; /* Ajusta altura para móviles si quieres */
+  }
+
+  /* Contenedor para el parallax con imagen */
+  .parallax-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Imagen que hace el efecto parallax */
+  .parallax-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translateY(0);
+    will-change: transform;
+    z-index: 1;
+  }
+
+  /* Texto encima */
+  .texto-sobre-imagen {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 150px; /* Ajusta para centrar */
+  }
+}
+
+
+
+
   </style>
 </head>
 <body>
-  <div class="container">
-        <!-- Texto a la izquierda -->
-        <div class="text-left">
-            <!-- Puedes agregar aquí el texto que desees para la izquierda -->
-             <div class="subtitle">Nos Casamos</div>
-        </div>       
-        <div class="image-center">
-            <img src="images/foto1.png">
-            <p class="invitation-text">"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
-        </div>      
-        <!-- Texto a la derecha -->
-        <div class="text-right">        
-            <div class="names">MARIANA & GABRIEL</div>
-            <!-- Puedes agregar aquí más texto si lo deseas -->
-        </div>
+<div class="sobre-container">
+  <!-- Solo visible en móviles -->
+  <img src="images/sobrearriba.png" alt="Sobre arriba" class="sobre-arriba">  
+
+  <div class="contenido" id="contenidoInvitacion">
+    <div class="container">
+      <!-- Contenido normal que quieres en desktop también -->
+      <div class="text-left">
+        <div class="subtitle">Nos Casamos</div>
+      </div>
+      <div class="image-center">
+        <img src="images/foto1.png" alt="Foto">
+        <p class="invitation-text">"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
+      </div>
     </div>
+  </div>
+  <!-- Solo visible en móviles -->
+  <img src="images/sobreabajo.png" alt="Sobre abajo" class="sobre-abajo">
+</div>
+<div style="text-align: center; margin-top: 20px;">
+  <div class="play-button" onclick="document.getElementById('audio').play()"></div>
+  <div class="play-label">Click aquí</div>
+</div>
+<audio id="audio" src="music/EdSheeranPerfect.mp3"></audio>
+
+
+
+
 <!--   <header class="hero-container">
     <div class="hero-text">
       <h1>Nos Casamos</h1>
@@ -1077,7 +1365,7 @@
       <h2>Y</h2>
       <h2>Gabriel Nava Reyes</h2>
       <p>Queremos invitarte a celebrar con nosotros</p>
-      <p>nuestra reunión en matrimonio.</p>
+      <p>nuestra unión en matrimonio.</p>
       <p>SÁBADO 22 DE NOVIEMBRE 2025</p>
     </div>
   </div>
@@ -1087,15 +1375,20 @@
   </div>
 </section>
 
-  <section id="seccion2">
-    <div class="img-wrapper">
-      <div class="texto-sobre-imagen">
-        <p>Las aguas no podrán nunca apagar el amor...</p>
-        <p>Y jamás lo ahogarán los ríos.</p>
-        <p>CANTARES 8:7</p>
-      </div>
+<<section id="seccion2">
+  <div class="img-wrapper">
+    <div class="texto-sobre-imagen">
+      <p>Las aguas no podrán nunca apagar el amor...</p>
+      <p>Y jamás lo ahogarán los ríos.</p>
+      <p>CANTARES 8:7</p>
     </div>
-  </section>
+    <!-- Aquí agregamos la imagen solo para móvil -->
+    <img src="images/foto2.jpg" alt="Imagen Parallax" class="parallax-img" />
+  </div>
+</section>
+
+
+
    <section id="seccion3">
     <div class="contenedor-seccion3">
       <p>Con la bendición de Dios y de nuestros</p>
@@ -1146,17 +1439,13 @@
     <p class="frase-final">Los momentos que compartes con quienes más amas,<br>se vuelven recuerdos inolvidables y permanecen vivos por siempre...</p>
 </section>
   <section id="seccion5">
-        <img src="images/iglesia2.jpg"/>
+        <img src="images/foto4iglesia.jpg"/>
         <img src="images/cruz.png"/>      
         <h2>Ceremonia Religiosa</h2>
         <p>
             📍 Joaquín Gallo 101, Santa Fe, Zedec Sta Fe, Álvaro Obregón, CP 01219 CDMX<br>
             🕔 4:00 PM
         </p>
-        <div class="mapa-container">
-                <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.888244552543!2d-99.2547229243385!3d19.426971981873722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d20139295ea8a5%3A0x0!2sJoaqu%C3%ADn%20Gallo%20101%2C%20Santa%20Fe%2C%20Zedec%20Sta%20F%C3%A9%2C%20%C3%81lvaro%20Obreg%C3%B3n%2C%2001219%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1718752345678!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
             <!-- Botón para abrir en Google Maps -->
             <a href="https://www.google.com/maps/place/Joaqu%C3%ADn+Gallo+101,+Santa+Fe,+Zedec+Sta+F%C3%A9,+%C3%81lvaro+Obreg%C3%B3n,+01219+Ciudad+de+M%C3%A9xico,+CDMX/@19.4269719,-99.2547229,17z/data=!3m1!4b1!4m6!3m5!1s0x85d20139295ea8a5:0x0!8m2!3d19.4269669!4d-99.252148!16s%2Fg%2F11c5m7t1f7?entry=ttu" class="boton-maps" target="_blank">
                 Abrir en Google Maps
@@ -1172,10 +1461,6 @@
       📍 Terraza del Hotel JW Marriot Santa Fe, Av. Santa Fe 160, Álvaro Obregón, CP 01376 CDMX<br>
       🕔 6:15 PM
     </p>
-    <div class="mapa-container">
-        <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.258150485684!2d-99.2679239243388!3d19.3599407818799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2017a5a1a6a9f%3A0x82c0e7db6c2e3c1e!2sJW%20Marriott%20Hotel%20Mexico%20City%20Santa%20Fe!5e0!3m2!1ses-419!2smx!4v1718752345678!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-
 <!-- Botón para abrir en Google Maps -->
 <a href="https://www.google.com/maps/place/JW+Marriott+Hotel+Mexico+City+Santa+Fe/@19.3599408,-99.2679239,17z/data=!3m1!4b1!4m9!3m8!1s0x85d2017a5a1a6a9f:0x82c0e7db6c2e3c1e!5m2!4m1!1i2!8m2!3d19.3599358!4d-99.265349!16s%2Fg%2F1thk7p7k?entry=ttu" class="boton-maps" target="_blank">
     Abrir en Google Maps
@@ -1193,12 +1478,12 @@
     <div class="img-wrapperc">
     </div>
 <section id="regalos">
-        <img src="images/regalo.png"> 
+        <img src="images/regalob.png"> 
         <h2>Mesa de Regalos</h2>
         <img src="images/liverpool.png"> 
         <p>Número de Evento</p>
         <p class="numero-evento">51723010</p>
-        <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51723010" class="boton-regalos" target="_blank">Ver Mesa de Regalos</a>
+        <!-- <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51723010" class="boton-regalos" target="_blank">Ver Mesa de Regalos</a> -->
         <p>Agradecemos mucho todo su amor y apoyo al iniciar esta etapa de formar nuestro hogar.</p>
     </section>
     <div class="img-wrapperd">
@@ -1208,8 +1493,8 @@
         <h2>Luna de Miel</h2>
         <p>Puedes hacerlo a la siguiente cuenta:</p>
         <img src="images/banco.png" alt="Datos Bancarios">
-        <div class="info-banco">CLABE: 012 180 0155 0874 6015</div>
-        <div class="info-banco">Débito: 4152 3137 9534 8726</div>
+        <label>CLABE: 012 180 0155 0874 6015</br>
+        <label>DÉBITO: 4152 3137 9534 8726
     </section>
   <section id="seccion7">
         <img src="images/foto9.png">
@@ -1220,12 +1505,20 @@
             Para esta ocasión, te pedimos elijas un atuendo completamente de <span class="negro-destacado">NEGRO</span>, evitando detalles grandes o estampados que resalten cualquier otro color. Esto, para mantener la elegancia de nuestro evento.</p>
              <p class="nota-importante">"NO vestido corto o de cóctel"</p>
         <!-- Contenedor especial para NO NIÑOS -->
-        <div class="adultos-only">
-            <h3>NO NIÑOS</h3>
+        <img src="images/noninos.png">
+            <h2>No Niños</h2>
             <p>Adoramos a los pequeños, sin embargo esta celebración está destinada solo para adultos.</p>
             <p>¡Agradecemos su comprensión!</p>
         </div>
     </section>
+    <section id="seccion7a">
+        <h2>Hoteles</h2>
+        <p>Para quienes gusten hospedarse en el hotel, solo mencionen</p>
+        <p>que son invitados a la <span class="negro-destacado">BODA DE MARIANA Y GABRIEL</span></p>
+        <img src="images/hotel3.jpg">
+    </section>
+
+
     <section id="seccion8">
         <h2>Hashtag del Evento</h2>
         <p>Ayúdanos a guardar memorias de este gran día!</p>
@@ -1239,7 +1532,7 @@
         <p>Llena el siguiente formulario y no olvides dar clic en el botón de enviar, nosotros 
           revisaremos tu confirmación y te agregaremos a nuestra lista de invitados.</p>
           
-        <form class="formulario-confirmacion" id="formConfirmacion" method="POST">
+        <form class="formulario-confirmacion" action="#" method="POST">
             <div class="campo-formulario">
                 <label for="nombre">Nombre Completo</label>
                 <input type="text" id="nombre" name="nombre" required>
@@ -1270,7 +1563,7 @@
                     <option value="5">5</option>
                 </select>
             </div>         
-            <button type="submit" class="boton-enviar" id="submitBtn">Enviar</button>
+            <button type="submit" class="boton-enviar">Enviar</button>
         </form>
     </section>
  <script>
@@ -1305,55 +1598,134 @@
         updateCountdown(); // Ejecutar inmediatamente
     </script>
     <script>
-    document.getElementById('formConfirmacion').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const submitBtn = document.getElementById('submitBtn');
-    
-    try {
-        // Mostrar estado de carga
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
-        
-        // Obtener datos del formulario
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
-        
-        // URL de tu Google Apps Script (IMPORTANTE: usa la URL de despliegue)
+      document.getElementById('formConfirmacion').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Obtener datos del formulario
+          const formData = {
+              nombre: document.getElementById('nombre').value,
+              telefono: document.getElementById('telefono').value,
+              asistencia: document.getElementById('asistencia').value,
+              confirmados: document.getElementById('confirmados').value
+          };
+          
+          // URL de tu Google Apps Script (reemplázala)
           const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbw_rtomPw_uPlvp1JjdboD5aPiiadshlraUlFdv4iY3CltMiX6P3CqTBMIi5BHt0koXNA/exec';
-        
-        // Enviar a Google Sheets como form-data
-        const response = await fetch(googleScriptUrl, {
-            method: 'POST',
-            body: new URLSearchParams(data),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-        });
-        
-        if (!response.ok) throw new Error('Error en la respuesta del servidor');
-        
-        // Enviar a WhatsApp
-        const mensaje = `Confirmación de boda:\n\n` +
-                       `Nombre: ${data.nombre}\n` +
-                       `Teléfono: ${data.telefono}\n` +
-                       `Asistencia: ${data.asistencia}\n` +
-                       `Número de personas: ${data.confirmados}`;
-        
-        const numeroWhatsApp = '525518602163'; // Reemplaza con tu número
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
-        
-        // Mensaje de éxito
-        alert('¡Confirmación enviada con éxito!');
-        this.reset();
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al enviar: ' + error.message);
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar';
+          
+          // Enviar a Google Sheets
+          fetch(googleScriptUrl, {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData)
+          })
+          .then(() => {
+              // Preparar mensaje para WhatsApp
+              const mensaje = `Confirmación de boda:\n\n` +
+                             `Nombre: ${formData.nombre}\n` +
+                             `Teléfono: ${formData.telefono}\n` +
+                             `Asistencia: ${formData.asistencia}\n` +
+                             `Número de personas: ${formData.confirmados}`;
+              
+              // Codificar el mensaje para URL
+              const mensajeCodificado = encodeURIComponent(mensaje);
+              
+              // Tu número de WhatsApp (reemplázalo, incluye código de país)
+              const numeroWhatsApp = '525518602163';
+              
+              // Abrir WhatsApp con el mensaje
+              window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
+              
+              // Mostrar mensaje de éxito
+              alert('¡Gracias por confirmar!.');
+              
+              // Limpiar formulario
+              document.getElementById('formConfirmacion').reset();
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('Hubo un error al enviar la confirmación. Por favor inténtalo de nuevo.');
+          });
+      });
+
+      const boton = document.querySelector('.boton-enviar');
+      boton.classList.add('loading');
+      boton.disabled = true;
+
+      // Y en el .then() y .catch(), añade:
+      boton.classList.remove('loading');
+      boton.disabled = false;
+    </script>
+
+
+
+<script>
+window.addEventListener("scroll", () => {
+  const ancho = window.innerWidth;
+  const sobreArriba = document.querySelector(".sobre-arriba");
+  const sobreAbajo = document.querySelector(".sobre-abajo");
+  const contenido = document.querySelector(".contenido-invitacion");
+
+  if (ancho < 768) {
+    if (window.scrollY > 50) {
+      sobreArriba.style.transform = "translateX(-50%) translateY(-100%)";
+
+      // Mueve hacia abajo y desaparece con clase
+      sobreAbajo.style.transform = "translateX(-50%) translateY(100%)";
+      sobreAbajo.classList.add("oculto");
+
+      // Mostrar contenido con efecto
+      contenido.style.opacity = "1";
+      contenido.style.transform = "translateY(0)";
+    } else {
+      sobreArriba.style.transform = "translateX(-50%) translateY(0)";
+
+      // Mostrar la parte inferior y quitar clase oculto
+      sobreAbajo.style.transform = "translateX(-50%) translateY(0)";
+      sobreAbajo.classList.remove("oculto");
+
+      // Ocultar contenido con efecto
+      contenido.style.opacity = "0";
+      contenido.style.transform = "translateY(30px)";
     }
+  } else {
+    // Reset para desktop
+    sobreArriba.style.transform = "translateX(-50%) translateY(0)";
+    sobreAbajo.style.transform = "translateX(-50%) translateY(0)";
+    sobreAbajo.classList.remove("oculto");
+    contenido.style.opacity = "1";
+    contenido.style.transform = "none";
+  }
 });
+
 </script>
+
+<script>
+  <script>
+  function parallaxEffectMobile() {
+    if (window.innerWidth <= 768) {
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const parallaxImgs = document.querySelectorAll(".parallax-img");
+        parallaxImgs.forEach((img) => {
+          const speed = 0.4;
+          img.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+    }
+  }
+
+  // Ejecutar al cargar la página
+  window.addEventListener("load", parallaxEffectMobile);
+  // También ejecutar al cambiar tamaño (opcional)
+  window.addEventListener("resize", parallaxEffectMobile);
+</script>
+
+</script>
+
+
+
 </body>
 </html>
