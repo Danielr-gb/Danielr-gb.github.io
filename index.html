@@ -435,7 +435,27 @@
         .service-content ul li {
             margin-bottom: 5px;
         }
+/* CORRECCIÓN DE BOTONES EN TARJETAS DE SERVICIOS */
+.service-content .btn-main {
+    display: inline-block;
+    background-color: var(--color-500);
+    color: #ffffff !important; /* Fuerza el texto blanco */
+    text-decoration: none !important; /* Elimina el subrayado morado */
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+/* Estado al pasar el cursor (hover) */
+.service-content .btn-main:hover,
+.service-content .btn-main:visited,
+.service-content .btn-main:active {
+    color: #ffffff !important; /* Mantiene el texto blanco en todo momento */
+    background-color: var(--color-600); /* Se oscurece ligeramente el fondo turquesa, no el texto */
+    transform: translateY(-2px);
+}
         /* CLIENTES / MARCAS */
         .clients-section {
             text-align: center;
