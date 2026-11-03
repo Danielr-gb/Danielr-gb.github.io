@@ -11,6 +11,66 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
+        /* ESTILOS DEL PRELOADER */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-50); /* Fondo azul claro idéntico a tu marca */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Por encima de todo el contenido */
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Círculo giratorio (Spinner) */
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(0, 188, 212, 0.15); /* Tono suave */
+            border-top: 4px solid var(--color-500); /* Azul turquesa brillante */
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        /* Logo en el centro con un ligero efecto respiración */
+        .loader-logo {
+            width: 85px;
+            height: auto;
+            object-fit: contain;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        /* Animación de giro de 360 grados */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animación suave para el logo */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        /* Clase para ocultar suavemente el preloader */
+        .preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
         /* PALETA DE COLORES */
         :root {
             --color-50:  #EBFFFF; /* Azul claro suave de fondo */
@@ -667,7 +727,13 @@
     </style>
 </head>
 <body>
-
+<!-- PRELOADER CON LOGO Y CÍRCULO GIRATORIO -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="loader-circle"></div>
+            <img src="imagenes/logotra.png" alt="Cargando..." class="loader-logo">
+        </div>
+    </div>
     <!-- HEADER -->
     <header>
         <div class="logo-container">
@@ -994,6 +1060,15 @@
 
         // Cambiar de slide cada 5 segundos (5000 milisegundos)
         setInterval(nextSlide, 5000);
+        // Ocultar el Preloader suavemente
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            
+            // Mantiene el loader visible por 2.5 segundos para que luzca la animación
+            setTimeout(() => {
+                preloader.classList.add('preloader-hidden');
+            }, 1500);
+        });
     </script>
 </body>
 </html>
