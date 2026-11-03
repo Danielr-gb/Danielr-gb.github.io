@@ -1,1731 +1,999 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación de Boda</title>
-  <!-- Fuente cursiva completa -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Acabados | Especialistas en Pisos e Impermeabilización</title>
+    <!-- Google Fonts & FontAwesome para iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Librería AOS CSS para animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* PALETA DE COLORES */
+        :root {
+            --color-50:  #EBFFFF; /* Azul claro suave de fondo */
+            --color-100: #CEFCFF;
+            --color-200: #A2F8FF;
+            --color-300: #63F0FD;
+            --color-400: #1CDEF4;
+            --color-500: #00BCD4; /* Turquesa Principal / Acciones */
+            --color-600: #039AB7;
+            --color-700: #0A7B94;
+            --color-800: #126378;
+            --color-900: #145265;
+            --color-950: #063646; /* Azul oscuro corporativo para textos y acentos */
 
-  <style>
-    @font-face {
-       font-family: 'Bionetha';
-       src: url('fonts/Bionetha.woff2') format('woff2'),
-            url('fonts/Bionetha.woff') format('woff');
-       /* Agrega más formatos si es necesario */
-     }
+            --light-bg: var(--color-50);
+            --dark-text: var(--color-950);
+        }
+
         * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Poiret One", sans-serif;
-      font-style: normal;
-      background-color: #fbf9f9;
-      color: #000;
-      line-height: 1.6;
-      font-size: 1.4rem;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      font-family: "Bionetha", sans-serif;
-      font-style: normal;
-      background-color: #fbf9f9;
-    }
-
-    .hero-text h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    . -text p {
-      font-size: 1.8rem;
-      font-style: italic;
-    }
-    /* ----- DISEÑO GENERAL ----- */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1900px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  min-height: 100vh; /* Ocupa toda la altura */
-}
-
-.text-left, .text-right {
-  flex: 1;
-  text-align: center;
-  padding: 20px;
-  font-size: 28px;
-  color: #333;
-  min-width: 20px;
-  white-space: nowrap;
-}
-
-.image-center {
-  flex: 0;
-  text-align: center;
-  margin: 0 0px;
-}
-
-.image-center img {
-  max-width: 700px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.invitation-text {
-  margin-top: 20px;
-  font-size: 20px;
-  font-style: italic;
-}
-
-/* ----- BOTÓN DE MÚSICA ----- */
-.play-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 2px solid gray;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  cursor: pointer;
-  position: static;
-  position: relative;
-}
-
-.play-button::before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 16px solid gray;  /* color gris para el triángulo */
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
-
-.play-label {
-  text-align: center;
-  color: gray;
-  font-size: 14px;
-  margin-top: 6px;
-  user-select: none;
-}
-
-/* ----- EFECTO DEL SOBRE (SOLO MÓVIL) ----- */
-.sobre-arriba, .sobre-abajo {
-  position: absolute;
-  width: 100%;
-  max-width: 400px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  transition: transform 1s ease;
-  z-index: 2;
-}
-
-.sobre-arriba {
-  top: 0;
-}
-
-.sobre-abajo {
-  top: 180px; /* ajusta según tu diseño */
-}
-.sobre-abajo {
-  position: absolute;
-  top: 180px; /* ajusta según diseño */
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  transition: transform 1s ease, opacity 0.5s ease;
-  z-index: 2;
-  opacity: 1;
-}
-
-.sobre-abajo.oculto {
-  opacity: 0;
-  pointer-events: none; /* para evitar que bloquee clics */
-}
-
-/* Contenido oculto inicialmente */
-.contenido-invitacion {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  position: relative;
-  z-index: 1;
-  margin: 140px auto 160px auto;
-  max-width: 400px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.sobre-arriba,
-.sobre-abajo {
-  width: 100%;
-  max-width: 500px;
-  display: block;
-  margin: 0 auto;
-}
-
-#nosotros {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.imagen-superior, .imagen-inferior {
-  width: 100vw; /* Ocupa el ancho completo de la ventana */
-  overflow: hidden;
-}
-
-.imagen-superior img, .imagen-inferior img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.contenedor-centrado {
-  width: 100%;
-  max-width: 800px; /* Ancho máximo para el texto */
-  padding: 40px 20px;
-  margin: 0 auto;
-}
-
-.hero-texta {
-  text-align: center;
-}
-
-.hero-texta h2 {
-  margin: 15px 0;
-}
-
-.hero-texta p {
-  margin: 10px 0;
-  line-height: 1.6;
-}
-.hero-texta {
-      flex: 1;
-      text-align: center;
-      margin-left: auto; 
-      padding-right: 0; 
-      font-family: "Poiret One", sans-serif;
-      font-size: 1.7rem;
-      color: #000;
-      padding: 3rem;
-      margin-top: 180px;
-    }
-
-    .container {
-      display: flex;
-     justify-content: center;
-     align-items: center;
-     max-width: 1900px;
-     margin: 0 auto;
-     padding: 40px 20px;
-        }
-        
-    .text-left, .text-right {
-       flex: 1;
-      text-align: center;
-      padding: 20px;
-      font-size: 28px;
-      color: #333;
-      min-width: 20px;
-      white-space: nowrap;
-      }
-        
-      .image-center {
-        flex: 0;
-        text-align: center;
-        margin: 0 0px;
-      }
-        
-    .image-center img {
-        max-width: 700px;  /* Máximo ancho de la imagen (ajusta este valor) */
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-        
-        .invitation-text {
-            font-size: 24px;
-            font-style: bold;
-            color: #555;
-            margin-top: 20px;
-        }
-        
-        .names {
-            font-family: "Poiret One", sans-serif;
-            font-size: 40px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #222;
-        }
-        
-        .subtitle {
-          font-family: "Bionetha", sans-serif;
-            font-size: 129px;
-            font-weight: normal;
-            margin-bottom: 20px;
-            color: #444;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
         }
 
-    #seccion2 {
-    margin: 0;
-    padding: 0;
-  }
-
-  .img-wrapper {
-    position: relative;
-    height: 800px; /* Puedes ajustar la altura */
-    width: 100vw;
-    background-image: url('images/foto2.jpg');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto parallax */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Capa oscura para oscurecer solo la imagen */
-  .img-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad si quieres más o menos oscurecido */
-    z-index: 0;
-  }
-
-  .texto-sobre-imagen {
-    position: relative;
-    color: #fff;
-    text-align: center;
-    font-family: "Poiret One", sans-serif;
-    font-size: 2rem;
-    padding: 1rem 2rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    max-width: 90%;
-    z-index: 1; /* Que esté sobre la capa oscura */
-  }
-
-  .img-wrappera {
-    position: relative;
-    height: 600px; /* Puedes ajustar la altura */
-    width: 100vw;
-    background-image: url('images/foto3a.jpg');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto parallax */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-     #seccion3 {
-      background-color: #fbf9f9;
-      text-align: center;
-      padding: 4rem 1rem;
-      font-family: "Poiret One", sans-serif;
-    }
-
-    .contenedor-seccion3 p {
-      font-size: 2rem;
-      margin: 0.5rem 0;
-    }
-
-    .contenedor-seccion3 h2 {
-      font-family: "Bionetha", sans-serif;
-      font-size: 3.5rem;
-      margin: 1.5rem 0;
-      color: #000;
-    }
-
-    .contenedor-seccion3 img {
-      max-width: 100px;
-      height: auto;
-      margin: 1.5rem auto;
-      display: block;
-    }
-   /* Estilos generales para la sección */
-#seccion4 {
-    text-align: center;
-    padding: 40px 20px;
-    font-family: "Poiret One", sans-serif;
-    background-color: #f9f9f9;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Estilos para la imagen del calendario */
-.img-wrapSper {
-    margin: 20px auto;
-    max-width: 100%;
-}
-
-.calendario-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Estilos para el contador regresivo */
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-    flex-wrap: wrap;
-}
-
-.countdown-box {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    min-width: 80px;
-    text-align: center;
-}
-
-.countdown-label {
-    font-family: "Poiret One", sans-serif;
-    font-size: 18px;
-    color: #777;
-    margin-top: 5px;
-}
-
-/* Textos */
-.faltan-text {
-    font-size: 1.5rem;
-    margin: 10px 0;
-}
-
-.frase-final {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-top: 20px;
-    font-style: italic;
-}
-
-      /* Estilos para la sección 5 */
-        #seccion5 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Primera imagen (ancho completo) */
-        #seccion5 img:first-child {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%); /* Centrado horizontal */
-            display: block;
-            max-height: 600px;
-            object-fit: cover;
-        }
-
-        /* Segunda imagen (cruz - centrada) */
-        #seccion5 img:nth-child(2) {
-            max-width: 150px;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-
-        #seccion5 h2 {
-           font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin: 20px 0;
-        }
-
-        #seccion5 p {
-           font-family: "Poiret One", sans-serif;
-            font-size: 22px;
-            color: #555;
+        body {
+            color: #333333;
+            background-color: var(--color-50);
             line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-         #seccion5 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        #seccion5a {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        #seccion5a h2 {
-           font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin: 20px 0;
-        }
-        .img-wrapperb {
-          position: relative;
-          height: 500px; /* Puedes ajustar la altura */
-          width: 100vw;
-          background-image: url('images/hotel.jpg');
-          background-size: cover;
-          background-position: top;
-          background-repeat: no-repeat;
-          background-attachment: fixed; /* Efecto parallax */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        #seccion5a p {
-           font-family: "Poiret One", sans-serif;
-            font-size: 22px;
-            color: #555;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-         #seccion5b {
-          text-align: center;
-
-          position: relative; /* Necesario para el overlay */
-          overflow: hidden; /* Evita desbordamientos */
+            overflow-x: hidden;
         }
 
-        #seccion5b img:first-child {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          display: block;
-          height: 700px; /* Altura fija (ajusta según necesites) */
-          object-fit: cover;
-          object-position: top center; /* Enfoca en la parte superior */
-        }
-
-        #seccion5b img:nth-child(2) {
-            max-width: 150px;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-        #seccion5b h2 {
-           font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin: 20px 0;
-        }
-        #seccion5b p {
-           font-family: "Poiret One", sans-serif;
-            font-size: 22px;
-            color: #555;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-         /* Estilos para el mapa */
-        .mapa-container {
-            margin: 30px auto;
+        /* HEADER & NAVBAR LUMINOSO Y CRISTALINO */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 600px;
-            height: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: rgba(235, 255, 255, 0.95); /* Fondo claro translúcido */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(6, 54, 70, 0.08);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            transition: all 0.3s ease;
         }
 
-        .mapa-iframe {
+        .logo-container img {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-500);
+        }
+
+        .btn-header {
+            background-color: var(--color-500);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: var(--color-600);
+        }
+
+        /* BOTÓN MENÚ HAMBURGUESA (Oculto en PC) */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--color-950);
+        }
+
+       /* HERO SLIDER CON EFECTO ZOOM Y TEXTOS CENTRADOS */
+        .hero {
+            position: relative;
+            height: 90vh;
+            background-color: var(--color-950);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 75px;
+            overflow: hidden;
+        }
+
+        /* Capas de imágenes del slider de fondo */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 1.5s ease-in-out, transform 6s ease-out;
+            transform: scale(1);
         }
 
-        /* Estilos para el botón */
-        .boton-maps {
-            display: inline-block;
-            background-color: #4285F4;
-            color: white;
-            padding: 12px 24px;
-            margin: 15px 0;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1.12);
         }
 
-        .boton-maps:hover {
-            background-color: #3367D6;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
- /* Contenedor principal (igual que seccion5b) */
-        #regalos {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Imagen decorativa (como copas.png) */
-         #regalos img:first-child {
-            width: 120px; /* Tamaño fijo para el icono de regalo */
-            height: auto;
-            margin: 0 auto 20px;
-            display: block;
-        }
-
-        /* Estilo para la segunda imagen (Liverpool) - AJUSTA ESTOS VALORES */
-        #regalos img:nth-child(3) {
-            width: 300px; /* Cambia este valor al ancho deseado */
-            max-width: 80%; /* Máximo ancho permitido (responsive) */
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-
-        /* Títulos (estilo consistente) */
-        #regalos h2 {
-          font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin: 20px 0;
-        }
-
-        /* Textos (igual que seccion5b) */
-        #regalos p {
-          font-family: "Poiret One", sans-serif;
-            font-size: 23px;
-            color: #555;
-            line-height: 1.6;
-            margin: 10px auto;
-            max-width: 600px;
-        }
-        .img-wrapperc {
-          position: relative;
-          height: 500px; /* Puedes ajustar la altura */
-          width: 100vw;
-          background-image: url('images/foto8a.jpg');
-          background-size: cover;
-          background-position: top;
-          background-repeat: no-repeat;
-          background-attachment: fixed; /* Efecto parallax */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        /* Número de evento destacado */
-        .numero-evento {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff383b; /* Tonos cálidos como en eventos de boda */
-            margin: 15px 0;
-        }
-
-        /* Botón (estilo discreto como elementos de seccion5b) */
-        .boton-regalos {
-            display: inline-block;
-            background-color: transparent;
-            color: #555;
-            padding: 10px 25px;
-            margin: 20px 0;
-            border: 1px solid #ff7d7f;
-            border-radius: 4px;
-            font-size: 19px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .boton-regalos:hover {
-            background-color: #f0a3a4;
-        }
-         /* Contenedor principal centrado */
-        #seccion6 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 600px; /* Ancho óptimo para lectura */
-            margin: 0 auto;
-        }
-
-    .img-wrapperd {
-          position: relative;
-          height: 500px; /* Puedes ajustar la altura */
-          width: 100vw;
-          background-image: url('images/foto10.jpg');
-          background-size: cover;
-          background-position: top;
-          background-repeat: no-repeat;
-          background-attachment: fixed; /* Efecto parallax */
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        /* Estilos de tipografía */
-        #seccion6 h2 {
-          font-family: "Bionetha", cursive;
-            font-size: 59px;
-            color: #333;
-            margin: 15px 0;
-        }
-
-        #seccion6 p {
-          font-family: "Poiret One", sans-serif;
-            font-size: 24px;
-            color: #555;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-
-        /* Imagen del banco centrada */
-        #seccion6 img {
-            max-width: 250px; /* Tamaño ajustable */
+        /* Capa oscura para contraste */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            margin: 20px auto;
-            display: block;
-        }
-/* Contenedor principal */
-        #seccion7 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            height: 100%;
+            background: rgba(6, 54, 70, 0.65);
+            z-index: 2;
         }
 
-        /* Imagen */
-        #seccion7 img {
-            max-width: 200px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 30px;
-            display: block;
-            border-radius: 8px;
+        /* Contenedor absoluto para que todos los textos ocupen el mismo lugar exacto */
+        .hero-content {
+            position: absolute;
+            z-index: 3;
+            max-width: 850px;
+            width: 90%;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none; /* Evita clics en textos ocultos */
         }
 
-        /* Textos */
-        #seccion7 h2 {
-          font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-         #seccion7 h3 {
-          font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin-bottom: 20px;
+        /* Texto activo visible y centrado */
+        .hero-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
-        #seccion7 p {
-          font-family: "Poiret One", sans-serif;
-            font-size: 22px;
-            color: #555;
-            line-height: 1.6;
-            margin: 12px auto;
-            max-width: 500px;
-        }
-
-        /* Estilo especial para "Etiqueta" */
-        #seccion7 p:first-of-type {
-          font-family: "Poiret One", sans-serif;
-
-            font-style: italic;
-            color: #888;
-            margin-bottom: 25px;
-        }
-/* Contenedor principal */
-        #seccion7 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Imagen */
-        #seccion7a img {
-            max-width: 1200px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 30px;
-            display: block;
-            border-radius: 8px;
-        }
-
-        /* Textos */
-        #seccion7a h2 {
-          font-family: "Bionetha", cursive;
-            font-size: 50px;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #seccion7a p {
-          font-family: "Poiret One", sans-serif;
-            font-size: 22px;
-            color: #555;
-            line-height: 1.6;
-            margin: 12px auto;
-            text-align: center;
-            max-width: 700px;
-        }
-
-        /* Estilo especial para "Etiqueta" */
-        #seccion7a p:first-of-type {
-          font-family: "Poiret One", sans-serif;
-
-            font-style: italic;
-            color: #888;
-            margin-bottom: 25px;
-        }
-        /* Contenedor destacado para NO NIÑOS */
-        .adultos-only {
-            background-color: #fae3e3;
-            border-left: 4px solid #ff7d7f;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 450px;
-            text-align: center;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .adultos-only h3 {
-          font-family: "Poiret One", sans-serif;
-            color: #ff7d7f;
-            font-size: 24px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .adultos-only p {
-          font-family: "Poiret One", sans-serif;
-            color: #666;
-            font-size: 16px;
-        }
-         .etiqueta {
-          font-family: "Poiret One", sans-serif;
-          font-size: 30px;
-            font-style: italic;
-            color: #000;
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
             margin-bottom: 15px;
-            display: block;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+            line-height: 1.2;
         }
 
-        .texto-vestimenta {
-            max-width: 500px;
-            margin: 0 auto 20px;
-            text-align: center;
-            padding: 0 15px;
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: var(--color-100);
+            text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         }
 
-        .negro-destacado {
-            font-weight: bold;
-            color: #000;
-        }
-
-        .nota-importante {
-            font-style: italic;
-            margin: 25px auto;
-            padding: 10px;
-            border-top: 2px solid #eee;
-            border-bottom: 2px solid #eee;
-            max-width: 400px;
-        }
-        #seccion8 {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        #seccion8 h2 {
-            font-size: 49px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        #seccion8 p {
-            font-size: 20px;
-            color: #555;
-            margin: 15px auto;
-            max-width: 500px;
-        }
-
-        /* Estilo para la imagen de Instagram */
-        #seccion8 img {
-            width: 80px; /* Tamaño más pequeño */
-            height: auto;
-            margin: 20px auto;
-            display: block;
-            transition: transform 0.3s ease; /* Efecto hover opcional */
-        }
-
-        /* Efecto hover para la imagen (opcional) */
-        #seccion8 img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Estilo especial para el hashtag */
-        .hashtag {
-            font-size: 20px;
-            font-weight: bold;
-            color: #E1306C; /* Color similar a Instagram */
-            letter-spacing: 1px;
-            margin: 25px auto;
+        /* Corrección de color para los botones dentro del slider */
+        .hero-content .btn-main {
+            background-color: var(--color-500);
+            color: white;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5px;
+            text-decoration: none;
             display: inline-block;
-            padding: 8px 15px;
-            background-color: #fae3e3;
-            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,188,212,0.4);
+            transition: background 0.3s, transform 0.2s;
         }
 
-     #seccion9 {
+        .hero-content .btn-main:hover {
+            background-color: var(--color-400);
+            transform: translateY(-2px);
+        }
+
+        .btn-main:hover {
+            background-color: var(--color-600);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
             text-align: center;
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            margin-bottom: 50px;
         }
 
-        #seccion9 h2 {
-            font-size: 49px;
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--color-950);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--color-500);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            color: var(--color-800);
+            font-size: 1.05rem;
+        }
+
+        /* SOBRE NOSOTROS (FONDO CLARO) */
+        .about-section {
+            background-color: #ffffff;
             color: #333;
-            margin-bottom: 20px;
         }
 
-        #seccion9 p {
-            font-size: 20px;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background: var(--color-50);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-500);
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            background: var(--color-100);
+        }
+
+        .feature-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--color-950);
+        }
+
+        .feature-box p {
             color: #555;
-            margin: 0 auto 30px;
-            max-width: 500px;
+            font-size: 0.9rem;
+            margin-bottom: 0;
         }
 
-        /* Estilos del formulario */
-        .formulario-confirmacion {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: left;
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(6, 54, 70, 0.1);
+            transition: transform 0.5s;
         }
 
-        .campo-formulario {
+        .about-img img:hover {
+            transform: scale(1.02);
+        }
+
+        /* SERVICIOS */
+        .services {
+            background-color: var(--color-50);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(6, 54, 70, 0.08);
+            border-top: 4px solid var(--color-500);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(6, 54, 70, 0.12);
+        }
+
+        .service-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--color-950);
+        }
+
+        .service-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .service-content ul li {
+            margin-bottom: 5px;
+        }
+
+        /* CLIENTES / MARCAS */
+        .clients-section {
+            text-align: center;
+            background: #fff;
+        }
+
+        .clients-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .client-logo-img {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .client-logo-img img {
+            max-height: 100%;
+            max-width: 130px;
+            object-fit: contain;
+        }
+
+        .client-logo-img:hover {
+            transform: scale(1.10);
+            opacity: 1;
+        }
+
+        /* CONTACTO Y COTIZACIÓN */
+        .contact-section {
+            background-color: var(--color-50);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(6, 54, 70, 0.08);
+        }
+
+        .contact-info {
+            background: var(--color-950);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
             margin-bottom: 20px;
         }
 
-        .campo-formulario label {
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--color-200);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            color: var(--color-300);
+        }
+
+        .contact-form {
+            padding: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-950);
         }
 
-        .campo-formulario input,
-        .campo-formulario select {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .boton-enviar {
-            background-color: #e60707;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--color-500);
+            box-shadow: 0 0 0 3px rgba(0,188,212,0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .btn-submit {
             width: 100%;
-            transition: background-color 0.3s;
+            background: var(--color-500);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .boton-enviar:hover {
-            background-color: #fc8d8d;
-        }   
+        .btn-submit:hover {
+            background: var(--color-600);
+        }
 
-   @media (max-width: 768px) {
-  body {
-    font-size: 1.1rem;
-  }
+        /* FOOTER */
+        footer {
+            background: var(--color-950);
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
 
-  /* Header */
-  .container {
-    flex-direction: column;
-    padding: 20px 10px;
-  }
-  
-  .text-left, .text-right {
-    padding: 10px;
-    font-size: 1.5rem;
-    white-space: normal;
-  }
-  
-  .image-center img {
-    max-width: 100%;
-    margin: 10px 0;
-  }
-  
-  .invitation-text {
-    font-size: 1.2rem;
-    margin-top: 10px;
-  }
-  
-  .names {
-    font-size: 2rem;
-  }
-  
-  .subtitle {
-    font-size: 3rem;
-  }
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1001;
+            transition: transform 0.3s;
+            text-decoration: none;
+            animation: pulse-whatsapp 2s infinite;
+        }
 
-  /* Sección Nosotros */
-  .hero-texta {
-    font-size: 1.3rem;
-    padding: 1.5rem;
-    margin-top: 50px;
-  }
-  
-  .hero-texta h2 {
-    font-size: 1.8rem;
-    margin: 10px 0;
-  }
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+        }
+/* SECCIÓN VIDEO DEMOSTRATIVO */
+        .video-section {
+            background-color: #b5eef4;
+            padding: 80px 10%;
+        }
 
-  /* Sección Padres */
-  .contenedor-seccion3 p {
-    font-size: 1.3rem;
-  }
+        .video-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
 
-  .contenedor-seccion3 h2 {
-    font-size: 2.2rem;
-  }
+        .video-text .video-subtitle {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-500);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
 
-  .contenedor-seccion3 img {
-    max-width: 80px;
-  }
+        .video-text h2 {
+            font-size: 2.2rem;
+            color: var(--color-950);
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
 
-  #seccion4 {
-        padding: 30px 15px;
-    }
-    
-    .calendario-img {
-        max-width: 350px;
-    }
-    
-    #countdown {
-        gap: 10px;
-        font-size: 20px;
-    }
-    
-    .countdown-box {
-        min-width: 70px;
-        padding: 8px 10px;
-    }
-    
-    .countdown-label {
-        font-size: 14px;
-    }
-    
-    .faltan-text {
-        font-size: 1.3rem;
-    }
-    
-    .frase-final {
-        font-size: 1.1rem;
-    }
-  /* Secciones de ubicación */
-  #seccion5, #seccion5a, #seccion5b, #regalos, #seccion6, #seccion7,#seccion7a, #seccion8, #seccion9 {
-    padding: 30px 15px;
-  }
-  
-  #seccion5 img:first-child, #seccion5b img:first-child {
-    height: 500px;
-  }
-  
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2,#seccion7a h2, #seccion8 h2, #seccion9 h2 {
-    font-size: 2.2rem;
-  }
-  
-  #seccion5 p, #seccion5a p, #seccion5b p, #regalos p, #seccion6 p, #seccion7 p, #seccion7a h2,#seccion8 p, #seccion9 p {
-    font-size: 1.1rem;
-    padding: 0 5px;
-  }
+        .video-text h3 {
+            font-size: 1.2rem;
+            color: var(--color-700);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
 
-  /* Mapas */
-  .mapa-container {
-    height: 250px;
-    margin: 15px auto;
-  }
+        .video-text p {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
 
-  /* Imágenes con efecto parallax */
-  .img-wrapper, .img-wrappera, .img-wrapperb, .img-wrapperc, .img-wrapperd {
-    height: 300px;
-    background-attachment: scroll;
-  }
-  
-  .texto-sobre-imagen {
-    font-size: 1.3rem;
-    padding: 0.5rem 1rem;
-  }
+        /* Contenedor Adaptable del Video */
+        .video-container {
+            position: relative;
+            width: 50%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(6, 54, 70, 0.15);
+            background-color: var(--color-950);
+        }
 
-  /* Mesa de regalos */
-  #regalos img:nth-child(3) {
-    width: 200px;
-  }
-  
-  .numero-evento {
-    font-size: 1.3rem;
-  }
+        .video-container video, 
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            display: block;
+            border: none;
+            object-fit: cover;
+        }
 
-  /* Datos bancarios */
-  .info-banco {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-    margin: 5px 0;
-  }
+        /* Ajuste para pantallas móviles */
+        @media (max-width: 768px) {
+            .video-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
 
-  /* Vestimenta */
-  .etiqueta {
-    font-size: 1.5rem;
-  }
-  
-  .adultos-only {
-    margin: 20px 5px;
-    padding: 15px;
-  }
-  
-  .adultos-only h3 {
-    font-size: 1.2rem;
-  }
-
-  /* Formulario */
-  .formulario-confirmacion {
-    padding: 20px;
-  }
-  
-  .campo-formulario {
-    margin-bottom: 15px;
-  }
-  
-  .campo-formulario input, 
-  .campo-formulario select {
-    padding: 10px;
-    font-size: 1rem;
-  }
-  
-  .boton-enviar {
-    padding: 10px 20px;
-  }
-
-  /* Hashtag */
-  .hashtag {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-  
-  #seccion8 img {
-    width: 60px;
-  }
-
-  #seccion7 img {
-    width: 100px;
-  }
-
-  .parallax-section {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 130%;
-  background-image: url('images/foto2.jpg');
-  background-size: cover;
-  background-position: center;
-  transform: translateY(-20%);
-  z-index: 1;
-  will-change: transform;
-}
-
-.parallax-content {
-  position: relative;
-  z-index: 2;
-  padding: 40px 20px;
-  text-align: center;
-  color: white;
-}
-}
-
-@media (max-width: 480px) {
-  /* Ajustes adicionales para pantallas muy pequeñas */
-  .hero-texta {
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
-  
-  .hero-texta h2 {
-    font-size: 1.5rem;
-  }
-  
-  #countdown {
-    font-size: 0.9rem;
-  }
-  
-  .countdown-box {
-    padding: 5px 8px;
-  }
-  
-  #seccion5 h2, #seccion5a h2, #seccion5b h2, #regalos h2, #seccion6 h2, #seccion7 h2,#seccion7a h2, #seccion8 h2, #seccion9 h2 {
-    font-size: 1.8rem;
-  }
-  
-  .img-wrapper, .img-wrappera, .img-wrapperb, .img-wrapperc, .img-wrapperd {
-    height: 250px;
-  }
-}
-  @media (max-width: 480px) {
-    .calendario-img {
-        max-width: 350px;
-    }
-    
-    #countdown {
-        font-size: 18px;
-    }
-    
-    .countdown-box {
-        min-width: 60px;
-        padding: 6px 8px;
-    }
-    
-    .countdown-label {
-        font-size: 12px;
-    }
-    
-    .faltan-text, .frase-final {
-        font-size: 1rem;
-    }
-}
-@media (min-width: 768px) {
-  /* Oculta sobres en pantallas grandes */
-  .sobre-arriba,
-  .sobre-abajo {
-    display: none !important;
-  }
-
-  .container {
-    flex-direction: row;
-    padding: 80px 40px;
-  }
-
-    .contenido-invitacion {
-    opacity: 1 !important;
-    transform: none !important;
-    margin: 0 auto;
-    max-width: 700px;
-    padding: 40px;
-  }
-}
-
-
-@media (max-width: 767px) {
-  .container {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .text-left, .image-center {
-    width: 100%;
-  }
-
-  .image-center img {
-    max-width: 90%;
-  }
-
-  .invitation-text {
-    font-size: 18px;
-  }
-}
-@media screen and (max-width: 768px) {
-  /* Desactiva el background fijo para que no cause problemas */
-  .img-wrapper,
-  .img-wrappera,
-  .img-wrapperb,
-  .img-wrapperc,
-  .img-wrapperd {
-    background-attachment: scroll !important;
-    background-image: none !important; /* Quitamos el background para usar img */
-    height: 600px; /* Ajusta altura para móviles si quieres */
-  }
-
-  /* Contenedor para el parallax con imagen */
-  .parallax-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  /* Imagen que hace el efecto parallax */
-  .parallax-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    object-fit: cover;
-    transform: translateY(0);
-    will-change: transform;
-    z-index: 1;
-  }
-
-  /* Texto encima */
-  .texto-sobre-imagen {
-    position: relative;
-    z-index: 2;
-    color: white;
-    text-align: center;
-    font-size: 1.5rem;
-    padding-top: 150px; /* Ajusta para centrar */
-  }
-}
-
-
-
-
-  </style>
-</head>
-<body>
-<div class="sobre-container">
-  <!-- Solo visible en móviles -->
-  <img src="images/sobrearriba.png" alt="Sobre arriba" class="sobre-arriba">  
-
-  <div class="contenido" id="contenidoInvitacion">
-    <div class="container">
-      <!-- Contenido normal que quieres en desktop también -->
-      <div class="text-left">
-        <div class="subtitle">Nos Casamos</div>
-      </div>
-      <div class="image-center">
-        <img src="images/foto1.png" alt="Foto">
-        <p class="invitation-text">"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
-      </div>
-    </div>
-  </div>
-  <!-- Solo visible en móviles -->
-  <img src="images/sobreabajo.png" alt="Sobre abajo" class="sobre-abajo">
-</div>
-<div style="text-align: center; margin-top: 20px;">
-  <div class="play-button" onclick="document.getElementById('audio').play()"></div>
-  <div class="play-label">Click aquí</div>
-</div>
-<audio id="audio" src="music/EdSheeranPerfect.mp3"></audio>
-
-
-
-
-<!--   <header class="hero-container">
-    <div class="hero-text">
-      <h1>Nos Casamos</h1>
-      <p>"En tus ojos encuentro el refugio de mi alma y en tu sonrisa el universo entero."</p>
-    </div>
-    <div class="parallax-image"></div>
-  </header> -->
-
-<section id="nosotros">
-  <div class="imagen-superior">
-    <img src="images/fondorosasreds5.png" />
-  </div>
-  
-  <div class="contenedor-centrado">
-    <div class="hero-texta">
-      <p>Nosotros...</p>
-      <h2>Mariana Ortiz Franco</h2>
-      <h2>Y</h2>
-      <h2>Gabriel Nava Reyes</h2>
-      <p>Queremos invitarte a celebrar con nosotros</p>
-      <p>nuestra unión en matrimonio.</p>
-      <p>SÁBADO 22 DE NOVIEMBRE 2025</p>
-    </div>
-  </div>
-  
-  <div class="imagen-inferior">
-    <img src="images/fondorosasreds5b.png" />
-  </div>
-</section>
-
-<<section id="seccion2">
-  <div class="img-wrapper">
-    <div class="texto-sobre-imagen">
-      <p>Las aguas no podrán nunca apagar el amor...</p>
-      <p>Y jamás lo ahogarán los ríos.</p>
-      <p>CANTARES 8:7</p>
-    </div>
-    <!-- Aquí agregamos la imagen solo para móvil -->
-    <img src="images/foto2.jpg" alt="Imagen Parallax" class="parallax-img" />
-  </div>
-</section>
-
-
-
-   <section id="seccion3">
-    <div class="contenedor-seccion3">
-      <p>Con la bendición de Dios y de nuestros</p>
-      <h2>Padres</h2>
-      <img src="images/vestidonovia.png" />
-      <p>Paraíso Franco</p>
-      <p>&</p>
-      <p>José Ortiz</p>
-      <img src="images/trajenovio.png"/>
-      <p>Guadalupe Reyes</p>
-      <p>&</p>
-      <p>Juan Nava</p>
-      <img src="images/anillos.png"/>
-      <p>Y la compañía de nuestros</p>
-      <h2>Padrinos</h2>
-    </div>
-  </section>
-  <section id="seccion2a">
-    <div class="img-wrappera">
-    </div>
-  </section>
-<section id="seccion4">
-    <h2>Guarda la Fecha</h2>
-    <div class="img-wrapSper">
-        <img src="images/calendario.png" alt="Calendario de la boda" class="calendario-img"/>
-    </div>
-    <p class="faltan-text">Faltan</p>
-    
-    <!-- Contador regresivo -->
-    <div id="countdown">
-        <div class="countdown-box">
-            <span id="days">00</span>
-            <div class="countdown-label">Días</div>
-        </div>
-        <div class="countdown-box">
-            <span id="hours">00</span>
-            <div class="countdown-label">Horas</div>
-        </div>
-        <div class="countdown-box">
-            <span id="minutes">00</span>
-            <div class="countdown-label">Minutos</div>
-        </div>
-        <div class="countdown-box">
-            <span id="seconds">00</span>
-            <div class="countdown-label">Segundos</div>
-        </div>
-    </div>     
-    <p class="frase-final">Los momentos que compartes con quienes más amas,<br>se vuelven recuerdos inolvidables y permanecen vivos por siempre...</p>
-</section>
-  <section id="seccion5">
-        <img src="images/foto4iglesia.jpg"/>
-        <img src="images/cruz.png"/>      
-        <h2>Ceremonia Religiosa</h2>
-        <p>
-            📍 Joaquín Gallo 101, Santa Fe, Zedec Sta Fe, Álvaro Obregón, CP 01219 CDMX<br>
-            🕔 4:00 PM
-        </p>
-            <!-- Botón para abrir en Google Maps -->
-            <a href="https://www.google.com/maps/place/Joaqu%C3%ADn+Gallo+101,+Santa+Fe,+Zedec+Sta+F%C3%A9,+%C3%81lvaro+Obreg%C3%B3n,+01219+Ciudad+de+M%C3%A9xico,+CDMX/@19.4269719,-99.2547229,17z/data=!3m1!4b1!4m6!3m5!1s0x85d20139295ea8a5:0x0!8m2!3d19.4269669!4d-99.252148!16s%2Fg%2F11c5m7t1f7?entry=ttu" class="boton-maps" target="_blank">
-                Abrir en Google Maps
-            </a>
-        </div>
-    </section>
-    <div class="img-wrapperb">
-    </div>
-  <section id="seccion5a">
-
-    <h2>Ceremonia Civil</h2>
-    <p>
-      📍 Terraza del Hotel JW Marriot Santa Fe, Av. Santa Fe 160, Álvaro Obregón, CP 01376 CDMX<br>
-      🕔 6:15 PM
-    </p>
-<!-- Botón para abrir en Google Maps -->
-<a href="https://www.google.com/maps/place/JW+Marriott+Hotel+Mexico+City+Santa+Fe/@19.3599408,-99.2679239,17z/data=!3m1!4b1!4m9!3m8!1s0x85d2017a5a1a6a9f:0x82c0e7db6c2e3c1e!5m2!4m1!1i2!8m2!3d19.3599358!4d-99.265349!16s%2Fg%2F1thk7p7k?entry=ttu" class="boton-maps" target="_blank">
-    Abrir en Google Maps
-</a>
-  </section>
-<section id="seccion5b">
-        <img src="images/foto7a.jpg"/>
-        <img src="images/copas.png"/>  
-        <h2>Recepción</h2>
-        <p>
-            📍 Salón Rothko-Miro-Picasso del Hotel JW Marriot Santa Fe<br>
-            🕔 7:00 PM
-        </p>
-</section>
-    <div class="img-wrapperc">
-    </div>
-<section id="regalos">
-        <img src="images/regalob.png"> 
-        <h2>Mesa de Regalos</h2>
-        <img src="images/liverpool.png"> 
-        <p>Número de Evento</p>
-        <p class="numero-evento">51723010</p>
-        <!-- <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51723010" class="boton-regalos" target="_blank">Ver Mesa de Regalos</a> -->
-        <p>Agradecemos mucho todo su amor y apoyo al iniciar esta etapa de formar nuestro hogar.</p>
-    </section>
-    <div class="img-wrapperd">
-    </div>
-<section id="seccion6">
-        <p>O si deseas agregar kilómetros y experiencias a nuestra</p>
-        <h2>Luna de Miel</h2>
-        <p>Puedes hacerlo a la siguiente cuenta:</p>
-        <img src="images/banco.png" alt="Datos Bancarios">
-        <label>CLABE: 012 180 0155 0874 6015</br>
-        <label>DÉBITO: 4152 3137 9534 8726
-    </section>
-  <section id="seccion7">
-        <img src="images/foto9.png">
-        <h2>Código de Vestimenta</h2>
-        <span class="etiqueta">Etiqueta</span>
-        <div class="texto-vestimenta">
-            <p>El color blanco se encuentra reservado únicamente para la novia.
-            Para esta ocasión, te pedimos elijas un atuendo completamente de <span class="negro-destacado">NEGRO</span>, evitando detalles grandes o estampados que resalten cualquier otro color. Esto, para mantener la elegancia de nuestro evento.</p>
-             <p class="nota-importante">"NO vestido corto o de cóctel"</p>
-        <!-- Contenedor especial para NO NIÑOS -->
-        <img src="images/noninos.png">
-            <h2>No Niños</h2>
-            <p>Adoramos a los pequeños, sin embargo esta celebración está destinada solo para adultos.</p>
-            <p>¡Agradecemos su comprensión!</p>
-        </div>
-    </section>
-    <section id="seccion7a">
-        <h2>Hoteles</h2>
-        <p>Para quienes gusten hospedarse en el hotel, solo mencionen</p>
-        <p>que son invitados a la <span class="negro-destacado">BODA DE MARIANA Y GABRIEL</span></p>
-        <img src="images/hotel3.jpg">
-    </section>
-
-
-    <section id="seccion8">
-        <h2>Hashtag del Evento</h2>
-        <p>Ayúdanos a guardar memorias de este gran día!</p>
-        <p>Comparte con nosotros todas tus fotografías del evento, usando el siguiente #hashtag en todas tus publicaciones de Facebook e Instagram.</p>
-        <img src="images/instagram.png">
-        <p class="hashtag">#BodaMarianaGabriel2025</p>
-    </section>
-
-      <section id="seccion9">
-        <h2>Confirma tu Asistencia</h2>
-        <p>Llena el siguiente formulario y no olvides dar clic en el botón de enviar, nosotros 
-          revisaremos tu confirmación y te agregaremos a nuestra lista de invitados.</p>
-          
-        <form class="formulario-confirmacion" action="#" method="POST">
-            <div class="campo-formulario">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            
-            <div class="campo-formulario">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            </div>
-            
-            <div class="campo-formulario">
-                <label for="asistencia">Confirmación</label>
-                <select id="asistencia" name="asistencia" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="si">Sí asistiré</option>
-                    <option value="no">No asistiré</option>
-                </select>
-            </div>
-            
-            <div class="campo-formulario">
-                <label for="confirmados">Número de Confirmados</label>
-                <select id="confirmados" name="confirmados" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>         
-            <button type="submit" class="boton-enviar">Enviar</button>
-        </form>
-    </section>
- <script>
-        // Fecha objetivo: 22 de noviembre de 2025 a las 4:00 PM
-        const targetDate = new Date('November 22, 2025 16:00:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            // Cálculos de tiempo
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Actualizar el HTML
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-            // Si la cuenta regresiva termina
-            if (distance < 0) {
-                clearInterval(countdownTimer);
-                document.getElementById('countdown').innerHTML = '<div style="color: #ff6b6b;">¡El gran día ha llegado!</div>';
+            .video-container video, 
+            .video-container iframe {
+                min-height: 230px;
             }
         }
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
 
-        // Actualizar cada segundo
-        const countdownTimer = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Ejecutar inmediatamente
-    </script>
+        /* DISEÑO RESPONSIVO Y MENÚ HAMBURGUESA */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Muestra el icono de hamburguesa en celulares */
+            }
+
+            nav ul {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: rgba(235, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+            }
+
+            /* Clase que activa el despliegue del menú hamburguesa con JS */
+            nav ul.active {
+                max-height: 350px;
+                padding: 30px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .about-grid, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .contact-info, .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <img src="imagenes/logotra.png" alt="Más Acabados Logo">
+        </div>
+        <!-- Botón de Menú Hamburguesa para Móvil -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#contacto" class="btn-header">Cotizar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- HERO SECTION CON SLIDER E IMÁGENES CON ZOOM -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        
+        <!-- Diapositiva 1 -->
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Diapositiva 2 -->
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1920&q=80');"></div>
+        <!-- Diapositiva 3 -->
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80');"></div>
+
+        <!-- Textos dinámicos sincronizados -->
+        <div class="hero-content active">
+            <h1>Especialistas en Pisos e Impermeabilización</h1>
+            <p>Soluciones profesionales de alta gama para proyectos residenciales, comerciales e industriales en la Ciudad de México y área metropolitana.</p>
+            <a href="#contacto" class="btn-main">Solicitar Cotización Gratis</a>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Pisos Epóxicos de Alto Desempeño</h1>
+            <p>Creamos superficies continuas, estéticas, luminosas y de alta resistencia para naves industriales y comercios.</p>
+            <a href="#contacto" class="btn-main">Conoce más servicios</a>
+        </div>
+
+        <div class="hero-content">
+            <h1>Sistemas de Impermeabilización Avanzada</h1>
+            <p>Tecnología híbrida de última generación con garantías de hasta 20 años para proteger tu patrimonio.</p>
+            <a href="#contacto" class="btn-main">Protégete Hoy</a>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="about-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Sobre Nosotros</h2>
+            <p>Comprometidos con la calidad y la durabilidad en cada superficie</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text" data-aos="fade-right">
+                <p>En <strong>Más Acabados</strong> somos una empresa experta en el correcto tratamiento, mantenimiento, pulido de cualquier tipo de piso y aplicación de sistemas de impermeabilización avanzados.</p>
+                <p>Atendemos proyectos en la Ciudad de México y área metropolitana, proporcionando personal altamente capacitado que le auxiliará en sus solicitudes, ofreciendo soluciones duraderas y de gran valor estético para sus inmuebles.</p>
+                <div class="about-features">
+                    <div class="feature-box">
+                        <h4>Personal Capacitado</h4>
+                        <p>Expertos en cada tipo de material.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>Garantía Extendida</h4>
+                        <p>Sistemas con respaldo de 5 a 20 años.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1706629503586-2731f65587ae?w=600&auto=format&fit=crop&q=60" alt="Trabajos de acabados y pisos">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="services">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Nuestros Servicios</h2>
+            <p>Tecnología y especialización en recubrimientos</p>
+        </div>
+        <div class="services-grid">
+            
+            <!-- Servicio 1: Pisos Epóxicos -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-img-container">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80');"></div>
+                </div>
+                <div class="service-content">
+                    <h3>Pisos Epóxicos</h3>
+                    <p>Creamos espacios limpios, luminosos y de bajo mantenimiento. Ideales para naves industriales, comercios y áreas estéticas.</p>
+                    <ul>
+                        <li>Autonivelante y Metalizado</li>
+                        <li>Industrial y Terrazo Epóxico</li>
+                        <li>Poliuretano y Uretano Cementicio</li>
+                    </ul>
+                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                </div>
+            </div>
+
+            <!-- Servicio 2: Concreto Pulido -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-img-container">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80');"></div>
+                </div>
+                <div class="service-content">
+                    <h3>Concreto Pulido y Brillado</h3>
+                    <p>Proceso mecánico-químico de desbaste que elimina el polveo y maximiza la luminosidad del inmueble.</p>
+                    <ul>
+                        <li>Ideal para Estacionamientos y Retail</li>
+                        <li>Bodegas y Naves Industriales</li>
+                        <li>Acabados Arquitectónicos (Compatible LEED)</li>
+                    </ul>
+                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                </div>
+            </div>
+
+            <!-- Servicio 3: Impermeabilización -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-img-container">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=80');"></div>
+                </div>
+                <div class="service-content">
+                    <h3>Impermeabilización Avanzada</h3>
+                    <p>Sistemas de alta gama de marcas mundiales. Dejamos atrás el rollo asfáltico apostando por tecnología híbrida.</p>
+                    <ul>
+                        <li>Elastoméricos Poliuretano-Acrílico</li>
+                        <li>Reforzados con microfibras de polipropileno</li>
+                        <li>Altamente resistentes a rayos UV (5 a 20 años de garantía)</li>
+                    </ul>
+                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- SECCIÓN VIDEO DE DEMOSTRACIÓN -->
+    <section id="video-demo" class="video-section">
+        <div class="video-wrapper">
+            <!-- Columna de Texto -->
+            <div class="video-text" data-aos="fade-right">
+                <span class="video-subtitle">VER VIDEO</span>
+                <h2>¡Vea nuestro trabajo!</h2>
+                <h3>Mantenimiento y Aplicaciones Industriales</h3>
+                <p>Nuestro epóxico está hecho con polímeros de la más alta calidad que permiten mayor resistencia al sustrato y mejor acabado, dando una mayor funcionalidad a su empresa.</p>
+            </div>
+
+            <!-- Columna del Video Incrustado -->
+            <div class="video-container" data-aos="fade-left">
+                <!-- Opción 1: Si tienes el video como archivo local en tu servidor (MP4) -->
+                <video controls poster="imagenes/video-thumbnail.jpg">
+                    <source src="imagenes/video1.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+
+                <!-- Opción 2: Si prefieres usar un video alojado en YouTube (descomenta esta línea y comenta el elemento video de arriba) -->
+                <!-- <iframe src="https://www.youtube.com/embed/TU_ID_DE_VIDEO" title="Video de trabajo real" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            </div>
+        </div>
+    </section>
+    <!-- CLIENTES / MARCAS -->
+    <section id="clientes" class="clients-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Empresas que Confían en Nosotros</h2>
+            <p>Experiencia comprobada trabajando para marcas líderes</p>
+        </div>
+        <div class="clients-grid" data-aos="zoom-in">
+            <div class="client-logo-img"><img src="imagenes/abilia.jpg" alt="Abilia"></div>
+            <div class="client-logo-img"><img src="imagenes/audi.jpg" alt="Audi"></div>
+            <div class="client-logo-img"><img src="imagenes/smartfit.jpg" alt="Smart Fit"></div>
+            <div class="client-logo-img"><img src="imagenes/carso.jpg" alt="Carso"></div>
+            <div class="client-logo-img"><img src="imagenes/vw.jpg" alt="Volkswagen"></div>
+            <div class="client-logo-img"><img src="imagenes/gicsa.jpg" alt="Gicsa"></div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y COTIZACIÓN -->
+    <section id="contacto" class="contact-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Solicita una Cotización</h2>
+            <p>Ponte en contacto con nuestro equipo comercial hoy mismo</p>
+        </div>
+        <div class="contact-wrapper" data-aos="fade-up">
+            <div class="contact-info">
+                <div>
+                    <h3>Información de Contacto</h3>
+                    <p>Escríbenos y solicita una cotización sin ningún compromiso. Si prefieres, también puedes llamarnos para obtener más información y resolver todas tus dudas. Estamos aquí para ayudarte y brindarte la mejor atención posible.</p>
+                    <div class="info-item">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span><strong>Alfredo Ramírez F.</strong><br>Director Comercial</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+52 (55) 4757 7232</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>alfredo.ramirez@masacabados.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Ciudad de México y Área Metropolitana</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="A dónde te podemos contactar">
+                    </div>
+                    <div class="form-group">
+                        <label for="servicio">Servicio de Interés *</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Pisos Epóxicos">Pisos Epóxicos</option>
+                            <option value="Concreto Pulido">Concreto Pulido y Brillado</option>
+                            <option value="Impermeabilización">Impermeabilización</option>
+                            <option value="Pulido de Mármol/Loseta">Pulido y Mantenimiento general de pisos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Detalles del Proyecto</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos los metros cuadrados, ubicación aproximada o dudas específicas..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Más Acabados. Especialistas en pisos e impermeabilización.</p>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/525547577232?text=Hola,%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20para%20sus%20servicios%20de%20acabados." class="whatsapp-float" target="_blank" title="Chatea con nosotros por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- LIBRERÍA AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      document.getElementById('formConfirmacion').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Obtener datos del formulario
-          const formData = {
-              nombre: document.getElementById('nombre').value,
-              telefono: document.getElementById('telefono').value,
-              asistencia: document.getElementById('asistencia').value,
-              confirmados: document.getElementById('confirmados').value
-          };
-          
-          // URL de tu Google Apps Script (reemplázala)
-          const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbw_rtomPw_uPlvp1JjdboD5aPiiadshlraUlFdv4iY3CltMiX6P3CqTBMIi5BHt0koXNA/exec';
-          
-          // Enviar a Google Sheets
-          fetch(googleScriptUrl, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(formData)
-          })
-          .then(() => {
-              // Preparar mensaje para WhatsApp
-              const mensaje = `Confirmación de boda:\n\n` +
-                             `Nombre: ${formData.nombre}\n` +
-                             `Teléfono: ${formData.telefono}\n` +
-                             `Asistencia: ${formData.asistencia}\n` +
-                             `Número de personas: ${formData.confirmados}`;
-              
-              // Codificar el mensaje para URL
-              const mensajeCodificado = encodeURIComponent(mensaje);
-              
-              // Tu número de WhatsApp (reemplázalo, incluye código de país)
-              const numeroWhatsApp = '525518602163';
-              
-              // Abrir WhatsApp con el mensaje
-              window.open(`https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`, '_blank');
-              
-              // Mostrar mensaje de éxito
-              alert('¡Gracias por confirmar!.');
-              
-              // Limpiar formulario
-              document.getElementById('formConfirmacion').reset();
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              alert('Hubo un error al enviar la confirmación. Por favor inténtalo de nuevo.');
-          });
-      });
-
-      const boton = document.querySelector('.boton-enviar');
-      boton.classList.add('loading');
-      boton.disabled = true;
-
-      // Y en el .then() y .catch(), añade:
-      boton.classList.remove('loading');
-      boton.disabled = false;
-    </script>
-
-
-
-<script>
-window.addEventListener("scroll", () => {
-  const ancho = window.innerWidth;
-  const sobreArriba = document.querySelector(".sobre-arriba");
-  const sobreAbajo = document.querySelector(".sobre-abajo");
-  const contenido = document.querySelector(".contenido-invitacion");
-
-  if (ancho < 768) {
-    if (window.scrollY > 50) {
-      sobreArriba.style.transform = "translateX(-50%) translateY(-100%)";
-
-      // Mueve hacia abajo y desaparece con clase
-      sobreAbajo.style.transform = "translateX(-50%) translateY(100%)";
-      sobreAbajo.classList.add("oculto");
-
-      // Mostrar contenido con efecto
-      contenido.style.opacity = "1";
-      contenido.style.transform = "translateY(0)";
-    } else {
-      sobreArriba.style.transform = "translateX(-50%) translateY(0)";
-
-      // Mostrar la parte inferior y quitar clase oculto
-      sobreAbajo.style.transform = "translateX(-50%) translateY(0)";
-      sobreAbajo.classList.remove("oculto");
-
-      // Ocultar contenido con efecto
-      contenido.style.opacity = "0";
-      contenido.style.transform = "translateY(30px)";
-    }
-  } else {
-    // Reset para desktop
-    sobreArriba.style.transform = "translateX(-50%) translateY(0)";
-    sobreAbajo.style.transform = "translateX(-50%) translateY(0)";
-    sobreAbajo.classList.remove("oculto");
-    contenido.style.opacity = "1";
-    contenido.style.transform = "none";
-  }
-});
-
-</script>
-
-<script>
-  <script>
-  function parallaxEffectMobile() {
-    if (window.innerWidth <= 768) {
-      window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const parallaxImgs = document.querySelectorAll(".parallax-img");
-        parallaxImgs.forEach((img) => {
-          const speed = 0.4;
-          img.style.transform = `translateY(${scrolled * speed}px)`;
+        AOS.init({
+            duration: 900,
+            once: true
         });
-      });
-    }
-  }
 
-  // Ejecutar al cargar la página
-  window.addEventListener("load", parallaxEffectMobile);
-  // También ejecutar al cambiar tamaño (opcional)
-  window.addEventListener("resize", parallaxEffectMobile);
-</script>
+        // Script para abrir/cerrar el menú hamburguesa en dispositivos móviles
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
 
-</script>
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
 
+        // Ocultar el menú automáticamente al hacer clic en cualquier opción del menú móvil
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
 
+        // Conexión del formulario con PHP
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.btn-submit');
+            
+            submitBtn.textContent = "Enviando solicitud...";
+            submitBtn.disabled = true;
 
+            fetch('enviar.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.");
+                    form.reset();
+                } else {
+                    alert("Hubo un error al enviar el mensaje. Inténtalo de nuevo o contáctanos por WhatsApp.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Ocurrió un error inesperado al procesar tu solicitud.");
+            })
+            .finally(() => {
+                submitBtn.textContent = "Enviar Solicitud";
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Script para el Slider Hero con Zoom y Cambio de Texto Automático
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const contents = document.querySelectorAll('.hero-content');
+
+        function nextSlide() {
+            // Remover clase activa de la diapositiva y texto actual
+            slides[currentSlide].classList.remove('active');
+            contents[currentSlide].classList.remove('active');
+
+            // Avanzar al siguiente índice
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            // Activar nueva diapositiva y texto
+            slides[currentSlide].classList.add('active');
+            contents[currentSlide].classList.add('active');
+        }
+
+        // Cambiar de slide cada 5 segundos (5000 milisegundos)
+        setInterval(nextSlide, 5000);
+    </script>
 </body>
 </html>
