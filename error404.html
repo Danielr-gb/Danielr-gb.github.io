@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio en Construcción | Más Acabados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-50:  #EBFFFF;
+            --color-500: #00BCD4;
+            --color-600: #039AB7;
+            --color-950: #063646;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body {
+            background-color: var(--color-50);
+            color: var(--color-950);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(6, 54, 70, 0.1);
+            max-width: 550px;
+            width: 100%;
+            border-top: 5px solid var(--color-500);
+        }
+        .error-container i {
+            font-size: 4rem;
+            color: var(--color-500);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .btn-home {
+            background-color: var(--color-500);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,188,212,0.3);
+        }
+        .btn-home:hover {
+            background-color: var(--color-600);
+            transform: translateY(-2px);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <i class="fa-solid fa-person-digging"></i>
+        <h1>Página en Construcción</h1>
+        <p>Estamos trabajando para ofrecerte la mejor experiencia y más contenido especializado. La sección que buscas estará disponible muy pronto.</p>
+        <a href="index.html" class="btn-home"><i class="fa-solid fa-house" style="margin-right: 8px;"></i> Regresar al Inicio</a>
+    </div>
+
+</body>
+</html>

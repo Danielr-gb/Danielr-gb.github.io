@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pisos Epóxicos | Más Acabados</title>
+    <link rel="icon" type="image/png" href="imagenes/logotra.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Reutiliza exactamente las mismas variables :root y estilos de tu index.html */
         :root {
             --color-50:  #EBFFFF; --color-100: #CEFCFF; --color-500: #00BCD4;
             --color-600: #039AB7; --color-800: #126378; --color-950: #063646;
@@ -27,7 +27,61 @@
         .btn-cotizar { display: inline-block; background: var(--color-500); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: background 0.3s; }
         .btn-cotizar:hover { background: var(--color-600); }
         footer { background: var(--color-950); color: #aaa; text-align: center; padding: 30px; font-size: 0.9rem; }
-        @media(max-width: 768px) { .detail-container { grid-template-columns: 1fr; padding: 30px 20px; } }
+        
+        /* ESTILOS DE LA VENTANA MODAL (CORREGIDOS) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 54, 70, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            text-align: left;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-950);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--color-500);
+        }
+
+        @media(max-width: 768px) { 
+            .detail-container { grid-template-columns: 1fr; padding: 30px 20px; } 
+        }
     </style>
 </head>
 <body>
@@ -49,7 +103,7 @@
                     <li>Alta resistencia a impactos y sustancias químicas.</li>
                     <li>Fácil mantenimiento y acabado impecable.</li>
                 </ul>
-                <a href="index.html#contacto" class="btn-cotizar">Solicitar Cotización de este Servicio</a>
+                <a href="#" id="openQuoteModal" class="btn-cotizar">Solicitar Cotización de este Servicio</a>
             </div>
             <div class="detail-img">
                 <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Pisos Epóxicos">
@@ -57,11 +111,59 @@
         </div>
     </section>
 
+    <!-- MODAL DE COTIZACIÓN -->
+    <div id="quoteModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closeQuoteModal">&times;</span>
+            <h2>Solicita una Cotización</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Completa tus datos y nos pondremos en contacto contigo a la brevedad.</p>
+
+            <form id="serviceQuoteForm">
+                <div class="form-group" style="margin-bottom: 15px; text-align: left;">
+                    <label for="nombre" style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--color-950);">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; text-align: left;">
+                    <label for="telefono" style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--color-950);">Teléfono / WhatsApp *</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="A dónde te podemos contactar" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px; text-align: left;">
+                    <label for="mensaje" style="display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; color: var(--color-950);">Detalles del Proyecto</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Metros cuadrados o dudas..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; height: 90px; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-cotizar" style="width: 100%; border: none; cursor: pointer;">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 Más Acabados. Especialistas en pisos e impermeabilización.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init();</script>
+    <script>
+        const quoteModal = document.getElementById('quoteModal');
+        const openQuoteBtn = document.getElementById('openQuoteModal');
+        const closeQuoteBtn = document.getElementById('closeQuoteModal');
+
+        openQuoteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            quoteModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeQuoteBtn.addEventListener('click', () => {
+            quoteModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        quoteModal.addEventListener('click', (e) => {
+            if (e.target === quoteModal) {
+                quoteModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>
