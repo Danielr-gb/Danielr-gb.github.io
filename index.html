@@ -744,6 +744,166 @@
                 padding: 30px 20px;
             }
         }
+        /* ESTILOS DE LA VENTANA MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 54, 70, 0.7); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* Clase para activar la visualización del modal con JS */
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 650px;
+            max-height: 80vh;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            overflow-y: auto;
+            text-align: left;
+            color: #333;
+        }
+
+        .modal-content h2 {
+            color: var(--color-950);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--color-500);
+            padding-bottom: 10px;
+        }
+
+        .modal-body-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .modal-body-text h4 {
+            color: var(--color-800);
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        .modal-body-text ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Botón de cerrar (X) */
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-950);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--color-500);
+        }
+        /* ESTILOS DEL BANNER DE ESTADÍSTICAS */
+        .stats-banner {
+            background-color: var(--color-950); /* Azul oscuro corporativo */
+            color: white;
+            padding: 60px 5%;
+            margin: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: var(--color-200);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ESTILOS DEL BOTÓN FLOTANTE "IR ARRIBA" */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* Ubicado en la esquina inferior izquierda para no estorbar al botón de WhatsApp */
+            background-color: var(--color-950);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(6, 54, 70, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--color-500);
+            transform: translateY(-3px);
+        }
+
+        /* RESPONSIVO PARA MÓVILES */
+        @media (max-width: 768px) {
+            .stat-item h3 {
+                font-size: 2.3rem;
+            }
+            .stats-banner {
+                padding: 40px 20px;
+            }
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -846,14 +1006,14 @@
                     <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80');"></div>
                 </div>
                 <div class="service-content">
-                    <h3>Pisos Epóxicos</h3>
+                    <h3><i class="fa-solid fa-layer-group" style="color: var(--color-500); margin-right: 8px;"></i> Pisos Epóxicos</h3>
                     <p>Creamos espacios limpios, luminosos y de bajo mantenimiento. Ideales para naves industriales, comercios y áreas estéticas.</p>
                     <ul>
                         <li>Autonivelante y Metalizado</li>
                         <li>Industrial y Terrazo Epóxico</li>
                         <li>Poliuretano y Uretano Cementicio</li>
                     </ul>
-                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                    <a href="epoxicos.html" class="btn-main">Más información</a>
                 </div>
             </div>
 
@@ -863,37 +1023,63 @@
                     <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80');"></div>
                 </div>
                 <div class="service-content">
-                    <h3>Concreto Pulido y Brillado</h3>
+                    <h3><i class="fa-solid fa-gem" style="color: var(--color-500); margin-right: 8px;"></i> Concreto Pulido y Brillado</h3>
                     <p>Proceso mecánico-químico de desbaste que elimina el polveo y maximiza la luminosidad del inmueble.</p>
                     <ul>
                         <li>Ideal para Estacionamientos y Retail</li>
                         <li>Bodegas y Naves Industriales</li>
                         <li>Acabados Arquitectónicos (Compatible LEED)</li>
                     </ul>
-                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                    <a href="concreto.html" class="btn-main">Más información</a>
                 </div>
             </div>
 
-            <!-- Servicio 3: Venta y colocación de lambrín, plafón y panel WPC -->
+            <!-- Servicio 3: Impermeabilización -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="service-img-container">
                     <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=80');"></div>
                 </div>
                 <div class="service-content">
-                    <h3>Venta y Colocación de Lambrín, Plafón y Panel WPC</h3>
-                    <p>Ofrecemos soluciones decorativas para renovar y transformar espacios mediante la venta e instalación de lambrín, plafones y paneles WPC.</p>
+                    <h3><i class="fa-solid fa-shield-halved" style="color: var(--color-500); margin-right: 8px;"></i> Impermeabilización</h3>
+                    <p>Sistemas de alta gama de marcas mundiales. Dejamos atrás el rollo asfáltico apostando por tecnología híbrida.</p>
                     <ul>
-                        <li>Lambrín de Madera y PVC</li>
-                        <li>Plafones de Aluminio y MDF</li>
-                        <li>Paneles WPC para exteriores e interiores</li>
+                        <li>Elastoméricos Poliuretano-Acrílico</li>
+                        <li>Reforzados con microfibras de polipropileno</li>
+                        <li>Altamente resistentes a rayos UV (5 a 20 años de garantía)</li>
                     </ul>
-                    <a href="#contacto" class="btn-main" style="padding: 8px 15px; font-size: 0.9rem;">Me interesa</a>
+                    <a href="impermeabilizacion.html" class="btn-main">Más información</a>
                 </div>
             </div>
 
         </div>
     </section>
-<!-- SECCIÓN VIDEO DE DEMOSTRACIÓN -->
+    <!-- BANNER DE ESTADÍSTICAS CON CONTADOR ANIMADO -->
+    <section class="stats-banner" data-aos="fade-up">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3><span class="counter" data-target="10">0</span>+</h3>
+                <p>Años de Experiencia</p>
+            </div>
+            <div class="stat-item">
+                <h3>+<span class="counter" data-target="150">0</span></h3>
+                <p>Proyectos Completados</p>
+            </div>
+            <div class="stat-item">
+                <h3>+<span class="counter" data-target="100">0</span></h3>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div class="stat-item">
+                <h3><span class="counter" data-target="100">0</span>%</h3>
+                <p>Compromiso con la Calidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÓN FLOTANTE PARA REGRESAR ARRIBA -->
+    <a href="#inicio" class="back-to-top" id="backToTopBtn" title="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+    <!-- SECCIÓN VIDEO DE DEMOSTRACIÓN -->
     <section id="video-demo" class="video-section">
         <div class="video-wrapper">
             <!-- Columna de Texto -->
@@ -996,8 +1182,37 @@
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Más Acabados. Especialistas en pisos e impermeabilización.</p>
+        <p style="margin-top: 8px;">
+            <a href="#" id="openPrivacyModal" style="color: var(--color-300); text-decoration: underline; font-size: 0.85rem;">Aviso de Privacidad</a>
+        </p>
     </footer>
+   <!-- MODAL DE AVISO DE PRIVACIDAD -->
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closePrivacyModal">&times;</span>
+            <h2>Aviso de Privacidad</h2>
+            <div class="modal-body-text">
+                <p><strong>Más Acabados</strong>, con domicilio en la Ciudad de México y área metropolitana, es responsable del tratamiento y protección de sus datos personales.</p>
+                
+                <h4>1. Datos que recabamos</h4>
+                <p>Para las finalidades señaladas en el presente aviso de privacidad, podemos recabar sus datos personales de distintas formas: cuando usted nos los proporciona directamente vía telefónica, correo electrónico o mediante nuestro formulario de contacto (Nombre, Teléfono y Correo electrónico).</p>
+                
+                <h4>2. Finalidad del tratamiento de datos</h4>
+                <p>Los datos personales que recabamos los utilizaremos para las siguientes finalidades que son necesarias para el servicio solicitado:</p>
+                <ul>
+                    <li>Proveer cotizaciones y presupuestos de nuestros servicios de pisos epóxicos, concreto pulido e impermeabilización.</li>
+                    <li>Establecer contacto y dar seguimiento a sus dudas, proyectos o requerimientos comerciales.</li>
+                </ul>
 
+                <h4>3. Protección de datos</h4>
+                <p>Sus datos personales serán resguardados bajo estrictas medidas de seguridad administrativas, técnicas y físicas, evitando su uso, acceso o divulgación no autorizada.</p>
+                
+                <h4>4. Modificaciones al Aviso de Privacidad</h4>
+                <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales. Cualquier cambio se mantendrá publicado en este mismo sitio web.</p>              
+                <p style="margin-top: 20px; font-size: 0.85rem; color: #777;">Última actualización: Noviembre 2026</p>
+            </div>
+        </div>
+    </div>
     <!-- BOTÓN WHATSAPP FLOTANTE -->
     <a href="https://wa.me/525547577232?text=Hola,%20me%20interesa%20solicitar%20una%20cotizaci%C3%B3n%20para%20sus%20servicios%20de%20acabados." class="whatsapp-float" target="_blank" title="Chatea con nosotros por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
@@ -1089,6 +1304,82 @@
                 preloader.classList.add('preloader-hidden');
             }, 1500);
         });
+
+        // Control de la ventana Modal del Aviso de Privacidad
+        const privacyModal = document.getElementById('privacyModal');
+        const openModalBtn = document.getElementById('openPrivacyModal');
+        const closeModalBtn = document.getElementById('closePrivacyModal');
+
+        // Abrir modal al hacer clic en el enlace del pie de página
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita que la página de fondo se mueva
+        });
+
+        // Cerrar modal al hacer clic en la "X"
+        closeModalBtn.addEventListener('click', () => {
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaura el scroll
+        });
+
+        // Cerrar modal al hacer clic fuera del cuadro blanco (en el fondo oscuro)
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        // 1. Mostrar u ocultar el botón "Volver arriba" al hacer scroll
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // 2. Animación de conteo numérico cuando el banner entra en pantalla
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        function runCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                // Velocidad del conteo (menor número = más rápido)
+                const speed = target / 20; 
+
+                const updateCount = () => {
+                    count += speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Usamos un observador para activar el conteo exactamente cuando el usuario llega al banner
+        const statsSection = document.querySelector('.stats-banner');
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    runCounters();
+                    animated = true; // Se ejecuta una sola vez para que no se reinicie al subir y bajar
+                }
+            });
+        }, { threshold: 0.4 }); // Se activa cuando el 40% del banner es visible en pantalla
+
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
     </script>
 </body>
 </html>

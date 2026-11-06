@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisos Epóxicos | Más Acabados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Reutiliza exactamente las mismas variables :root y estilos de tu index.html */
+        :root {
+            --color-50:  #EBFFFF; --color-100: #CEFCFF; --color-500: #00BCD4;
+            --color-600: #039AB7; --color-800: #126378; --color-950: #063646;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--color-50); color: #333; line-height: 1.6; }
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(235, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000; box-shadow: 0 2px 15px rgba(6,54,70,0.08); }
+        .logo-container img { height: 45px; }
+        .back-home { color: var(--color-950); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .back-home:hover { color: var(--color-500); }
+        .service-detail { padding: 140px 10% 80px; }
+        .detail-container { background: white; border-radius: 12px; padding: 50px; box-shadow: 0 10px 30px rgba(6,54,70,0.08); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .detail-text h1 { font-size: 2.2rem; color: var(--color-950); margin-bottom: 20px; }
+        .detail-text p { margin-bottom: 15px; color: #555; }
+        .detail-img img { width: 100%; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-cotizar { display: inline-block; background: var(--color-500); color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: background 0.3s; }
+        .btn-cotizar:hover { background: var(--color-600); }
+        footer { background: var(--color-950); color: #aaa; text-align: center; padding: 30px; font-size: 0.9rem; }
+        @media(max-width: 768px) { .detail-container { grid-template-columns: 1fr; padding: 30px 20px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="imagenes/logotra.png" alt="Más Acabados">
+        </div>
+        <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Volver al Inicio</a>
+    </header>
+
+    <section class="service-detail">
+        <div class="detail-container" data-aos="fade-up">
+            <div class="detail-text">
+                <h1>Pisos Epóxicos de Alto Desempeño</h1>
+                <p>Nuestros sistemas de pisos epóxicos están diseñados para ofrecer superficies continuas, altamente estéticas y con una resistencia mecánica y química superior.</p>
+                <p>Ideales para naves industriales, plantas farmacéuticas, almacenes logísticos, comercios y áreas de alta exigencia donde la limpieza y la durabilidad son fundamentales.</p>
+                <ul style="padding-left: 20px; margin-bottom: 20px; color: #444;">
+                    <li>Sistemas autonivelantes y decorativos.</li>
+                    <li>Alta resistencia a impactos y sustancias químicas.</li>
+                    <li>Fácil mantenimiento y acabado impecable.</li>
+                </ul>
+                <a href="index.html#contacto" class="btn-cotizar">Solicitar Cotización de este Servicio</a>
+            </div>
+            <div class="detail-img">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Pisos Epóxicos">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Más Acabados. Especialistas en pisos e impermeabilización.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>
